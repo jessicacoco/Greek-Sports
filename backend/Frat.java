@@ -4,7 +4,7 @@
     int size;
 
     // class constructor
-    public Sorority(String sorority_name, int sorority_size) {
+    public Frat(String frat_name, int frat_size) {
         this.name = frat_name;
         this.size = frat_size;
     }

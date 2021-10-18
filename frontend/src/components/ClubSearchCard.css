@@ -3,3 +3,8 @@
 .search-card {
     background: white;
 }
+
+.search-card button {
+    margin-top: 10px;
+    margin-left: 5px;
+}

@@ -42,7 +42,6 @@ function SportSearchCard() {
                     </Option>
                 ))}
             </Select>
-            <br/>
             <Button type="primary">
                 Search
             </Button>

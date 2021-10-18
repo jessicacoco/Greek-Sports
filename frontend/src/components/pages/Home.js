@@ -1,7 +1,11 @@
 import React from 'react';
-import { Row, Col } from 'antd';
-import SearchCard from '../SearchCard';
+import { Row, Col, Tabs } from 'antd';
+import FSSearchCard from '../FSSearchCard';
+import SportSearchCard from '../SportSearchCard';
+import ClubSearchCard from '../ClubSearchCard';
 import './Home.css';
+
+const { TabPane } = Tabs;
 
 function Home() {
   return (
@@ -13,7 +17,17 @@ function Home() {
         </Row>
         <Row justify="center">
             <Col span={16}>
-                <SearchCard />
+                <Tabs defaultActiveKey="1" centered>
+                    <TabPane tab="Search by Fraternity/Sorority" key="1">
+                        <FSSearchCard/>
+                    </TabPane>
+                    <TabPane tab="Search by Varsity/Club Sport" key="2">
+                        <SportSearchCard />
+                    </TabPane>
+                    <TabPane tab="Search by Club" key="3">
+                        <ClubSearchCard />
+                    </TabPane>
+                </Tabs>
             </Col>
         </Row>
     </>

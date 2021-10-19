@@ -41,7 +41,6 @@ function FSSearchCard() {
                     </Option>
                 ))}
             </Select>
-            <br/>
             <Button type="primary">
                 Search
             </Button>

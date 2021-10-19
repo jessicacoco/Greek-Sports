@@ -2,4 +2,10 @@
 
 .search-card {
     background: white;
+    margin-left: 35%;
+}
+
+.search-card button {
+    margin-top: 10px;
+    margin-left: 5px;
 }

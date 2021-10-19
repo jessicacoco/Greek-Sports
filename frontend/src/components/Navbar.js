@@ -13,9 +13,15 @@ function Navbar() {
                                 <img class="logo-image" src="./SportsLogoPractice.jpg"></img>
                             </Link>
                         </li>
+                        
                         <li class="nav-link">
                             <Link to="/about-us">
                                 <h3 className="nav-links">About Us</h3>
+                            </Link>
+                        </li>
+                        <li class="nav-link">
+                            <Link to="/">
+                                <h3 className="nav-links">Search</h3>
                             </Link>
                         </li>
                     </ul>

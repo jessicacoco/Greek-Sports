@@ -18,12 +18,12 @@ function Home() {
   return (
     <>
         <Row justify="center">
-            <Col span={8}>
+            <Col span={5}>
                 <h1>Welcome to Greek Sports</h1>
             </Col>
         </Row>
         <Row justify="center">
-            <Col span={16}>
+            <Col span={18}>
                 <Tabs defaultActiveKey="1" centered>
                     <TabPane tab="Search by Fraternity/Sorority" key="1">
                         <FSSearchCard />

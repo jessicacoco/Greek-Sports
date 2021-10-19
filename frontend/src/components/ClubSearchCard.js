@@ -41,7 +41,6 @@ function ClubSearchCard() {
                     </Option>
                 ))}
             </Select>
-            <br/>
             <Button type="primary">
                 Search
             </Button>

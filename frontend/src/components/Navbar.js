@@ -13,10 +13,19 @@ function Navbar() {
                                 <img class="logo-image" src="./SportsLogoPractice.jpg"></img>
                             </Link>
                         </li>
-                        
+                        <li class="nav-link">
+                            <Link to="/contact-us">
+                                <h3 className="nav-links">Contact Us</h3>
+                            </Link>
+                        </li>
                         <li class="nav-link">
                             <Link to="/about-us">
                                 <h3 className="nav-links">About Us</h3>
+                            </Link>
+                        </li>
+                        <li class="nav-link">
+                            <Link to="/explore">
+                                <h3 className="nav-links">Explore</h3>
                             </Link>
                         </li>
                         <li class="nav-link">

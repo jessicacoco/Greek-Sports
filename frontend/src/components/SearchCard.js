@@ -48,7 +48,6 @@ function SearchCard({ setSearchResults, results, type }) {
                     </Option>
                 ))}
             </Select>
-            <br/>
             <Button type="primary" icon={<SearchOutlined />} onClick={onSearch(value)}>
                 Search
             </Button>

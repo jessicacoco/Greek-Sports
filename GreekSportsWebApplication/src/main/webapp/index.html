@@ -1,0 +1,32 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="UTF-8">  
+<title>First Web Application</title>  
+</head>  
+<style>  
+ul {  
+  list-style-type: none;  
+  margin: 0;  
+  padding: 0;  
+}  
+body {  
+background-color: #E6E6FA;  
+}  
+</style>  
+<body>  
+<h1>Welcome to Greek Sports
+<img alt="image" src="GS_Logo.jpg" width="300" height="300" align="right">
+</h1>
+Please select what kind of Greek Life you are interested in:
+<form name="Form1" method="post" action="Form1Servlet">
+<select onchange="this.form.submit()" id="option" name="option">
+	<option>Select an option</option>
+	<option>Fraternity</option>
+	<option>Sorority</option>
+	<option>Coed</option>
+	<option>NONE</option>
+</select>
+</form>
+</body>  
+</html>

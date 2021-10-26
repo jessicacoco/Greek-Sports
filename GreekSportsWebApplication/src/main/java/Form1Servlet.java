@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -53,10 +56,17 @@ public class Form1Servlet extends HttpServlet {
         		InputStreamReader isr = new InputStreamReader(url2.openStream());
             	BufferedReader reader = new BufferedReader(isr);
                 
-         
             	String htmlResponse = "<html>";
                 String s = null;
+                
                 while ((s=reader.readLine()) != null) {
+                	
+                	// gotta make a class object for each line s
+                	List<String> sorority_data = Arrays.asList(s.split("\\s*,\\s*")); // split by comma
+                	String sorority_name = sorority_data.get(0);
+                	int s_total = Integer.valueOf(sorority_data.get(27)); // total is at index 27 in a row
+                	String s_logo = sorority_data.get(28); // logo is at last index in a row
+                	
                 	htmlResponse += s + "<br/>";
                 }
                 htmlResponse += "<br/>";

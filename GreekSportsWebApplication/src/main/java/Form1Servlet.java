@@ -59,13 +59,38 @@ public class Form1Servlet extends HttpServlet {
             	String htmlResponse = "<html>";
                 String s = null;
                 
+                // read the first line with all of the activity names here
+                String clubstring = reader.readLine();
+                List<String> clubnames = Arrays.asList(clubstring.split("\\s*,\\s*")); // split by comma
+                
+                //empty list of all of the greek organizations
+                ArrayList<GreekOrg> all_orgs = new ArrayList<GreekOrg>();
+                
                 while ((s=reader.readLine()) != null) {
                 	
-                	// gotta make a class object for each line s
-                	List<String> sorority_data = Arrays.asList(s.split("\\s*,\\s*")); // split by comma
-                	String sorority_name = sorority_data.get(0);
-                	int s_total = Integer.valueOf(sorority_data.get(27)); // total is at index 27 in a row
-                	String s_logo = sorority_data.get(28); // logo is at last index in a row
+                	// CODE TO MAKE OBJECTS FOR THE DATA IN EACH LINE
+                	List<String> line_data = Arrays.asList(s.split("\\s*,\\s*")); // split by comma
+                	int sorority_size = Integer.valueOf(line_data.get(27));
+                	Sorority temp = new Sorority(line_data.get(0), line_data.get(28), sorority_size);
+                	
+                	// add all of the club data into the sorority object as an activity object
+                	for(int i = 1; i < 27; i++) // start at 1 to skip the sorority name
+                	{
+                		String[] clubData = clubnames.get(i).split("_");
+                		String activ_type;
+                		int num = Integer.valueOf(line_data.get(i));
+                		if (clubData[0].equals("C"))
+                		{
+                			activ_type = "Club";
+                		}
+                		else
+                		{
+                			activ_type = "Sport";
+                		}
+                		Activity temp_activity = new Activity(clubData[1], num, activ_type);
+                		temp.addActivity(temp_activity);
+                	}
+                	all_orgs.add(temp); // update the fat list of all of the greek orgs
                 	
                 	htmlResponse += s + "<br/>";
                 }

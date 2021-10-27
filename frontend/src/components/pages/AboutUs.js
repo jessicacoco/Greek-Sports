@@ -28,7 +28,7 @@ function AboutUs() {
                     <ProfileCard name="Jessica Coco" end={endb} year={year} src="./JessicaCoco.jpg"/>
                 </Col>
                 <Col span={4}>
-                <ProfileCard name="Jonathan Psaras" end={endb} year={year} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"/>
+                <ProfileCard name="Jonathan Psaras" end={endb} year={year} src="./JonPsaras.jpg"/>
                 </Col>
                 <Col span={4}>
                 <ProfileCard name="Emma Skantze" end={endf} year={year} src="./EmmaSkantze.jpg"/>

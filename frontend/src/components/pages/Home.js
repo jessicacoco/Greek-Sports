@@ -8,30 +8,37 @@ const { TabPane } = Tabs;
 
 function Home() {
     const [results, setResults] = useState([]);
+    const [name, setName] = useState('');
 
     function setSearchResults(values) {
         setResults(values);
     }
 
-    if (results.length != 0) {
+    function setSearchName(value) {
+        setName(value);
+    }
+
+    function clear(key) {
+        setName('');
+        setResults([]);
+        console.log('cleared',key);
+    }
+
+
+    if (name.length == 0) {
         return (
             <>
                 <Row justify="center">
-                    <Col span={5}>
-                        <h1>Welcome to Greek Sports</h1>
-                    </Col>
-                </Row>
-                <Row justify="center">
                     <Col span={18}>
-                        <Tabs defaultActiveKey="1" centered>
+                        <Tabs defaultActiveKey="1" centered onChange={clear}>
                             <TabPane tab="Search by Fraternity/Sorority" key="1">
-                                <SearchCard results={results} setSearchResults={setSearchResults} type={"greek"}/>
+                                <SearchCard setSearchResults={setSearchResults} setSearchName={setSearchName} type={"greek"}/>
                             </TabPane>
                             <TabPane tab="Search by Varsity/Club Sport" key="2">
-                                <SearchCard results={results} type={"sports"}/>
+                                <SearchCard setSearchResults={setSearchResults} setSearchName={setSearchName} type={"sports"}/>
                             </TabPane>
                             <TabPane tab="Search by Club" key="3">
-                                <SearchCard results={results} type={"clubs"}/>
+                                <SearchCard setSearchResults={setSearchResults} setSearchName={setSearchName} type={"clubs"}/>
                             </TabPane>
                         </Tabs>
                     </Col>
@@ -43,28 +50,23 @@ function Home() {
         return (
             <>
                 <Row justify="center">
-                    <Col span={5}>
-                        <h1>Welcome to Greek Sports</h1>
-                    </Col>
-                </Row>
-                <Row justify="center">
                     <Col span={18}>
-                        <Tabs defaultActiveKey="1" centered>
+                        <Tabs defaultActiveKey="1" centered onChange={clear}>
                             <TabPane tab="Search by Fraternity/Sorority" key="1">
-                                <SearchCard results={results} setSearchResults={setSearchResults} type={"greek"}/>
+                                <SearchCard setSearchResults={setSearchResults} setSearchName={setSearchName} type={"greek"}/>
                             </TabPane>
                             <TabPane tab="Search by Varsity/Club Sport" key="2">
-                                <SearchCard results={results} setSearchResults={setSearchResults} type={"sports"}/>
+                                <SearchCard setSearchResults={setSearchResults} setSearchName={setSearchName} type={"sports"}/>
                             </TabPane>
                             <TabPane tab="Search by Club" key="3">
-                                <SearchCard results={results} setSearchResults={setSearchResults} type={"clubs"}/>
+                                <SearchCard setSearchResults={setSearchResults} setSearchName={setSearchName} type={"clubs"}/>
                             </TabPane>
                         </Tabs>
                     </Col>
                 </Row>
                 <Row>
                     <Col span={20} offset={2}>
-                        <ResultsTable results={results}/>
+                        <ResultsTable results={results} name={name}/>
                     </Col>
                 </Row>
             </>

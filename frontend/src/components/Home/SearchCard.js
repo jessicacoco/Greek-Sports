@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Redirect } from "react-router-dom";
 import './SearchCard.css';
 import { Select, Button } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
@@ -7,7 +6,7 @@ import { SearchOutlined } from '@ant-design/icons';
 const { Option } = Select;
 
 
-function SearchCard({ setSearchResults, results, type }) {
+function SearchCard({ setSearchResults, setSearchName, type }) {
     const [value, setValue] = useState('');
 
     // make the DB call return it alpha sorted so I don't have to do that
@@ -15,22 +14,25 @@ function SearchCard({ setSearchResults, results, type }) {
     : (type == "sports") ? ['Women\'s Varsity Soccer','Crew','Club Hockey']
     : ['SWE','Sole Survivors','Outdoors Club'];
 
-    function onChange(value) {
-        setValue(value);
-        console.log(`selected ${value}`);
+    function onChange(val) {
+        setValue(val);
+        console.log('selected:', value);
     };
 
-    function onSearch(val) {
+    function onSearch() {
         // call search DB request here using value
         // put request results in and redirect
         //window.location.href = "http://stackoverflow.com";
-        console.log('search:', val);
+        setSearchName(value);
+        setValue('');
+        console.log('search:', value);
     };
 
     return (
         <>
         <div className="search-card">
             <Select
+                value={value}
                 showSearch
                 style={{ width: 300 }}
                 placeholder={(type == "greek") ? "Select a fraternity/sorority" 
@@ -48,7 +50,7 @@ function SearchCard({ setSearchResults, results, type }) {
                     </Option>
                 ))}
             </Select>
-            <Button type="primary" icon={<SearchOutlined />} onClick={onSearch(value)}>
+            <Button type="primary" icon={<SearchOutlined />} onClick={onSearch}>
                 Search
             </Button>
         </div>

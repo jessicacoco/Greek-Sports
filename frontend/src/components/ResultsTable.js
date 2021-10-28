@@ -33,7 +33,7 @@ const data = [
     },
   ];
 
-function ResultsTable({results}) {
+function ResultsTable({results, name}) {
     const columns = [{
           title: 'Name',
           dataIndex: 'name',
@@ -73,7 +73,7 @@ function ResultsTable({results}) {
       
     return (
         <>
-            <h3>Fraternity/Sorority Name</h3>
+            <h3>{name}</h3>
             <Table columns={columns} dataSource={data} pagination={false}/>
         </>
     );

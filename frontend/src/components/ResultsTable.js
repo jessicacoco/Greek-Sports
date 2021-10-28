@@ -66,6 +66,7 @@ function ResultsTable({results}) {
         {
           title: 'Percentage of Members',
           dataIndex: 'percent',
+          render: percent => percent+"%",
           sorter: (a, b) => a.percent - b.percent,
         },
       ];

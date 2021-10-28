@@ -1,0 +1,23 @@
+@import '~antd/dist/antd.css';
+
+.header {
+    font-weight: bold;
+    text-align: center;
+}
+
+.contact-cols {
+    display: flex;
+}
+
+.contact-icon-col {
+    justify-content: center;
+}
+
+.contact-form-col {
+    justify-content: center;
+}
+
+.contact-icon {
+    max-width: 50%;
+    height: auto;
+}

@@ -1,0 +1,11 @@
+@import '~antd/dist/antd.css';
+
+.profileImage {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.profileName {
+    font-weight: bold;
+}

@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
 import { Row, Col, Tabs } from 'antd';
-import FSSearchCard from '../FSSearchCard';
-import SportSearchCard from '../SportSearchCard';
-import ClubSearchCard from '../ClubSearchCard';
-import SearchCard from '../SearchCard';
 import ResultsTable from '../ResultsTable';
 import SearchCard from '../Home/SearchCard';
 import './Home.css';

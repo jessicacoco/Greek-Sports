@@ -16,24 +16,24 @@ function ContactUsForm() {
         <Form
           name="basic"
           labelCol={{ span: 8, }}
-          wrapperCol={{ span: 16, }}
+          wrapperCol={{ span: 40, }}
           initialValues={{ remember: true, }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           autoComplete="off">
-          <Form.Item label="Name" name="name"
+          <Form.Item name="name" 
             rules={[{ required: true, message: 'Please input your name!',},]}>
-            <Input />
+            <Input placeholder="Full Name"/>
           </Form.Item>
-          <Form.Item label="Email" name="email"
+          <Form.Item name="email"
             rules={[{ required: true, message: 'Please input your email!',},]}>
-            <Input />
+            <Input placeholder="Email"/>
           </Form.Item>
-          <Form.Item label="Message" name="message"
+          <Form.Item name="message"
             rules={[{ required: true, message: 'Please input a message!',},]}>
-            <Input.TextArea allowClear showCount autoSize={{ minRows: 2, maxRows: 6 }}/>
+            <Input.TextArea placeholder="Message" allowClear showCount autoSize={{ minRows: 2, maxRows: 6 }}/>
           </Form.Item>
-          <Form.Item wrapperCol={{ offset: 8, span: 16, }}>
+          <Form.Item wrapperCol={{ span: 24, }}>
             <Button type="primary" htmlType="submit">
               Submit
             </Button>

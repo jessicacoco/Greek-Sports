@@ -16,10 +16,10 @@ function ContactUs() {
         <Row gutter={[16,24]}>
             <Col span={8} offset={4}>
                 <div class="contact-cols contact-icon-col">
-                <img class="contact-icon" src="./ContactUsIcon.png"/>
+                <img class="contact-icon" src="./ContactUs_transparent.png"/>
                 </div>
             </Col>
-            <Col span={8}>
+            <Col span={6}>
                 <div class="contact-cols contact-form-col">
                     <ContactUsForm/>
                 </div>

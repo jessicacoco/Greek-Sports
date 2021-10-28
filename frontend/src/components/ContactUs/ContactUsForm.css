@@ -1,1 +1,10 @@
 @import '~antd/dist/antd.css';
+
+input {
+    border-radius:10px;
+    width: 300px;
+    padding-left: 10px;
+}
+button {
+    width: 100%;
+}

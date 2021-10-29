@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'antd';
 import ContactUsForm from '../ContactUs/ContactUsForm';
+import Footer from '../Footer';
 import './ContactUs.css';
 
 const style = {background: '#0092ff'};
@@ -25,6 +26,11 @@ function ContactUs() {
                 </div>
             </Col>
             <Col span={4}></Col>
+        </Row>
+        <Row>
+            <Col span={24}>
+                <Footer />
+            </Col>
         </Row>
         </>
     );

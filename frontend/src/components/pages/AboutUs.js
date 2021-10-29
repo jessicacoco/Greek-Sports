@@ -9,6 +9,7 @@ function AboutUs() {
     var endb = "Backend Developer";
     var endf = "Frontend Developer";
     var year = "Class of 2022";
+    var younger_year = "Class of 2023";
     return (
         <>
             <Row>
@@ -21,7 +22,7 @@ function AboutUs() {
                     <ProfileCard name="Chyna Cobbs" end={endb} year={year} src="./ChynaCobbs.png"/>
                 </Col>
                 <Col span={4}>
-                    <ProfileCard name="Jessica Coco" end={endb} year={year} src="./JessicaCoco.jpg"/>
+                    <ProfileCard name="Jessica Coco" end={endb} year={younger_year} src="./JessicaCoco.jpg"/>
                 </Col>
                 <Col span={4}>
                 <ProfileCard name="Jonathan Psaras" end={endb} year={year} src="./JonPsaras.jpg"/>

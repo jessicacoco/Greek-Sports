@@ -8,7 +8,7 @@
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Program Files (x86)/Apache Software Foundation/Tomcat 9.0/lib/servlet-api.jar">
+	<classpathentry kind="lib" path="/usr/local/apache-tomcat-9.0.54/lib/servlet-api.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>

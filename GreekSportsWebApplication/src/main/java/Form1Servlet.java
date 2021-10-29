@@ -23,11 +23,27 @@ import javax.servlet.http.HttpServletResponse;
 public class Form1Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	/* Function takes in list of GreekOrg objects and the frat/sorority name.
+	 * Then the function traverses the list of GreekOrg objects, looking for
+	 * the entry whose name equals house parameter. Once the function finds
+	 * this entry, it retrieves the necessary information for the Activity
+	 * and stores it in a list, preceeding to add it to the 2D list.
+	 * The function repeats this for each Activity, then return the 2D list.
+	 * 
+	 * Input: List of all GreekOrg objects created from csv file
+	 *        and the frat/sorority name as a string
+	 *        
+	 * Output: 2D ArrayList with each nested list containing
+	 *         [Activity name, Activity type, Number of members, Percentage of members]
+	 *         for each Activity that the given frat/sorority has at least 1 member in
+	 * 
+	 */
 	public ArrayList<List<String>> FS_Search(ArrayList<GreekOrg> all_orgs, String house){
 		// 2D list to store name, type, number of members, and percent of members for each Activity
 		ArrayList<List<String>> result = new ArrayList<List<String>>();
-		
+		// Traverse list of GreekOrg objects
 		for(int i = 0; i < all_orgs.size(); i++) {
+			// If the current GreekOrg object's names is equal to house...
 			if(all_orgs.get(i).getName().equals(house)) {
 				GreekOrg temp_house = all_orgs.get(i);
 				int total = temp_house.getSize();
@@ -40,15 +56,16 @@ public class Form1Servlet extends HttpServlet {
 					// Retrieve number of Acitivty members
 					int num = activities.get(j).getSize();
 					String num_string = String.valueOf(num);
-					//float percentage = (float)((num*100)/total);
 					// Calculate percentage of people from GreekOrg in Activity
 					String percentage = String.format(java.util.Locale.US,"%.2f", (float)((num*100)/total));
-					// Add entry that includes [Activity name, Activity type, Number of members, Percentage of members]
-					result.add(Arrays.asList(name,type,num_string,percentage));
+					// If there is at least 1 member in Activity...
+					if (num != 0) {
+						// Add entry that includes [Activity name, Activity type, Number of members, Percentage of members]
+						result.add(Arrays.asList(name,type,num_string,percentage));
+					}
 				}
 			}
 		}
-		
 		return result;
 	}
        

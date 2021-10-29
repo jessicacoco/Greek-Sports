@@ -2,6 +2,7 @@ import React from 'react';
 import { Row, Col } from 'antd';
 import './AboutUs.css';
 import ProfileCard from '../AboutUs/ProfileCard';
+import Footer from '../Footer';
 
 function AboutUs() {
     var paragraph = "Joining a fraternity or sorority can be a great way to meet people and make lots of friends for incoming students, but with so many choices, it can be stressful to choose just one. Typically, students feel comfortable around kids that play or like similar sports to them, which can be a great start to finding new friends. We built Greek Sports to allow students to do just that: find Greek life that fits them, and later, find sports and clubs that their greek organization is involved in to further connect with other members.";
@@ -43,6 +44,11 @@ function AboutUs() {
             <Row>
                 <Col span={24}>
                     <p>{paragraph}</p>
+                </Col>
+            </Row>
+            <Row>
+                <Col span={24}>
+                    <Footer />
                 </Col>
             </Row>
         </>

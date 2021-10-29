@@ -33,7 +33,7 @@ const data = [
     },
   ];
 
-function ResultsTable({results}) {
+function ResultsTable({results, name}) {
     const columns = [{
           title: 'Name',
           dataIndex: 'name',
@@ -66,13 +66,14 @@ function ResultsTable({results}) {
         {
           title: 'Percentage of Members',
           dataIndex: 'percent',
+          render: percent => percent+"%",
           sorter: (a, b) => a.percent - b.percent,
         },
       ];
       
     return (
         <>
-            <h3>Fraternity/Sorority Name</h3>
+            <h3>{name}</h3>
             <Table columns={columns} dataSource={data} pagination={false}/>
         </>
     );

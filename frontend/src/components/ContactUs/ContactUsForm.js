@@ -34,7 +34,7 @@ function ContactUsForm() {
             <Input.TextArea placeholder="Message" allowClear showCount autoSize={{ minRows: 2, maxRows: 6 }}/>
           </Form.Item>
           <Form.Item wrapperCol={{ span: 24, }}>
-            <Button type="primary" htmlType="submit">
+            <Button id="contactUsbtn" type="primary" htmlType="submit">
               Submit
             </Button>
           </Form.Item>

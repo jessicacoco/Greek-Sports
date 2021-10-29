@@ -8,7 +8,7 @@ const style = {background: '#0092ff'};
 
 function ContactUs() {
     return (
-        <>
+        <div class="contact-us">
         <Row>
             <Col span={24}>
                 <h1 class="header">HAVE SOME QUESTIONS?</h1>
@@ -32,7 +32,7 @@ function ContactUs() {
                 <Footer />
             </Col>
         </Row>
-        </>
+        </div>
     );
 }
 

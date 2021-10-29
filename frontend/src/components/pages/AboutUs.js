@@ -30,7 +30,7 @@ function AboutUs() {
                 <ProfileCard name="Emma Skantze" end={endf} year={year} src="./EmmaSkantze.jpg"/>
                 </Col>
                 <Col span={4}>
-                <ProfileCard name="Erin Song" end={endf} year={year} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"/>
+                <ProfileCard name="Erin Song" end={endf} year={year} src="./ErinSong.jpeg"/>
                 </Col>
                 <Col span={4}>
                 <ProfileCard name="Chace Woods" end={endf} year={year} src="./ChaceWoods.jpg"/>

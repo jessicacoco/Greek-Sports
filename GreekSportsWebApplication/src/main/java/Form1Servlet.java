@@ -10,7 +10,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,7 +30,7 @@ public class Form1Servlet extends HttpServlet {
 	 * the entry whose name equals house parameter. Once the function finds
 	 * this entry, it retrieves the necessary information for the Activity
 	 * and stores it in a list, preceeding to add it to the 2D list.
-	 * The function repeats this for each Activity, then return the 2D list.
+	 * The function repeats this for each Activity, then returns the 2D list.
 	 * 
 	 * Input: List of all GreekOrg objects created from csv file
 	 *        and the frat/sorority name as a string
@@ -113,6 +112,115 @@ public class Form1Servlet extends HttpServlet {
 		return sorted_result;
 	}
 	
+	
+	
+	/* 
+	 * Function takes in list of GreekOrg objects and the Sport name.
+	 * Then the function traverses the list of GreekOrg objects, retrieving
+	 * the Acitvities list for each object. Then, going through that list searching
+	 * for the Acitvity object whose name is equal to the sport parameter. 
+	 * Once the function finds this entry, it retrieves the necessary information 
+	 * for the GreekOrg's Acitvity and stores it in a list, preceeding to add it to the 2D list.
+	 * The function repeats this for each GreekOrg object, then returns the 2D list.
+	 * 
+	 * Input: List of all GreekOrg objects created from csv file
+	 *        and the Sport name as a string
+	 *        
+	 * Output: 2D ArrayList with each nested list containing
+	 *         [GreekOrg name, GreekOrg type, Number of members, Percentage of members]
+	 *         for each each GreekOrg that has at least 1 member in the given sport
+	 * 
+	 */
+	public ArrayList<ArrayList<String>> SportSearch(ArrayList<GreekOrg> all_orgs, String sport){
+		ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
+		// Traverse array of GreekOrg objects
+		for(int i = 0; i < all_orgs.size(); i++) {
+			// Retrieve name for current GreekOrg object
+			String house = all_orgs.get(i).getName();
+			// Retrieve type for current GreekOrg object
+			String type = all_orgs.get(i).getOrgType();
+			// Retrieve size for current GreekOrg object
+			int total = all_orgs.get(i).getSize();
+			// Retrieve Activities list for current GreekOrg object
+			ArrayList<Activity> activities = all_orgs.get(i).getActivities();
+			// Traverse Activities list
+			for(Activity a:activities) {
+				// If the activity name is equal to the sport parameter, there is at least 1 member, and the activity is a sport... 
+				if(a.getName().equals(sport) && a.getSize() != 0 && a.getActivityType().equals("Sport")) {
+					// Retrieve sport team size
+					int num = a.getSize();
+					String num_string = String.valueOf(num);
+					// Calculate percentage of people from GreekOrg in Activity
+					String percentage = String.format(java.util.Locale.US,"%.2f", (float)((num*100)/total));
+					// Add entry that includes [GreekOrg name, GreekOrg type, Number of members, Percentage of members]
+					result.add(new ArrayList<String>(Arrays.asList(house,type,num_string,percentage)));
+				}
+			}
+		}
+		// Sort 2D array by only the first element in the nested list (i.e. GreekOrg name)
+		Collections.sort(result, new Comparator<ArrayList<String>>() {    
+		@Override
+		public int compare(ArrayList<String> o1, ArrayList<String> o2) {
+			return o1.get(0).compareTo(o2.get(0));
+			        }               
+		});
+		return result;
+	}
+	
+	
+	/* 
+	 * Function takes in list of GreekOrg objects and the Club name.
+	 * Then the function traverses the list of GreekOrg objects, retrieving
+	 * the Acitvities list for each object. Then, going through that list searching
+	 * for the Acitvity object whose name is equal to the club parameter. 
+	 * Once the function finds this entry, it retrieves the necessary information 
+	 * for the GreekOrg's Acitvity and stores it in a list, preceeding to add it to the 2D list.
+	 * The function repeats this for each GreekOrg object, then returns the 2D list.
+	 * 
+	 * Input: List of all GreekOrg objects created from csv file
+	 *        and the Club name as a string
+	 *        
+	 * Output: 2D ArrayList with each nested list containing
+	 *         [GreekOrg name, GreekOrg type, Number of members, Percentage of members]
+	 *         for each each GreekOrg that has at least 1 member in the given sport
+	 * 
+	 */
+	public ArrayList<ArrayList<String>> ClubSearch(ArrayList<GreekOrg> all_orgs, String club){
+		ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
+		// Traverse array of GreekOrg objects
+		for(int i = 0; i < all_orgs.size(); i++) {
+			// Retrieve name for current GreekOrg object
+			String house = all_orgs.get(i).getName();
+			// Retrieve type for current GreekOrg object
+			String type = all_orgs.get(i).getOrgType();
+			// Retrieve size for current GreekOrg object
+			int total = all_orgs.get(i).getSize();
+			// Retrieve Activities list for current GreekOrg object
+			ArrayList<Activity> activities = all_orgs.get(i).getActivities();
+			// Traverse Activities list
+			for(Activity a:activities) {
+				// If the activity name is equal to the sport parameter, there is at least 1 member, and the activity is a club... 
+				if(a.getName().equals(club) && a.getSize() != 0 && a.getActivityType().equals("Club")) {
+					// Retrieve sport team size
+					int num = a.getSize();
+					String num_string = String.valueOf(num);
+					// Calculate percentage of people from GreekOrg in Activity
+					String percentage = String.format(java.util.Locale.US,"%.2f", (float)((num*100)/total));
+					// Add entry that includes [GreekOrg name, GreekOrg type, Number of members, Percentage of members]
+					result.add(new ArrayList<String>(Arrays.asList(house,type,num_string,percentage)));
+				}
+			}
+		}
+		// Sort 2D array by only the first element in the nested list (i.e. GreekOrg name)
+		Collections.sort(result, new Comparator<ArrayList<String>>() {    
+		@Override
+		public int compare(ArrayList<String> o1, ArrayList<String> o2) {
+			return o1.get(0).compareTo(o2.get(0));
+			        }               
+		});
+		return result;
+	}
+	
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -182,8 +290,16 @@ public class Form1Servlet extends HttpServlet {
                 	
                 }
                 
+                /*
+                 * How to test query functions:
+                 * ArrayList<ArrayList<String>> query_result = FS_Search(all_orgs, "Alpha Omega Epsilon");
+                 * ArrayList<ArrayList<String>> query_result = FS_TopThree(all_orgs, "Alpha Omega Epsilon");
+                 * ArrayList<ArrayList<String>> query_result = SportSearch(all_orgs, "WomenSoccer");
+                 * ArrayList<ArrayList<String>> query_result = ClubSearch(all_orgs, "Crew");
+                 * 
+                 */
                 // Test the FS_TopThree function, check output in HTML page
-                ArrayList<ArrayList<String>> query_result = FS_TopThree(all_orgs, "Alpha Gamma Delta");
+                ArrayList<ArrayList<String>> query_result = FS_TopThree(all_orgs, "Alpha Omega Epsilon");
                 String htmlResponse = "<html>";
                 for (ArrayList<String> list:query_result) {
                 	for (String x : list) {

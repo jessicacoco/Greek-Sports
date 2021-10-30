@@ -25,7 +25,8 @@ import javax.servlet.http.HttpServletResponse;
 public class Form1Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	/* Function takes in list of GreekOrg objects and the frat/sorority name.
+	/* 
+	 * Function takes in list of GreekOrg objects and the frat/sorority name.
 	 * Then the function traverses the list of GreekOrg objects, looking for
 	 * the entry whose name equals house parameter. Once the function finds
 	 * this entry, it retrieves the necessary information for the Activity
@@ -37,7 +38,7 @@ public class Form1Servlet extends HttpServlet {
 	 *        
 	 * Output: 2D ArrayList with each nested list containing
 	 *         [Activity name, Activity type, Number of members, Percentage of members]
-	 *         for each Activity that the given frat/sorority has at least 1 member in
+	 *         for each Activity that the given frat/sorority has at least 1 member in it
 	 * 
 	 */
 	public ArrayList<ArrayList<String>> FS_Search(ArrayList<GreekOrg> all_orgs, String house){
@@ -78,18 +79,43 @@ public class Form1Servlet extends HttpServlet {
 		return result;
 	}
 	
+	
+	/* 
+	 * Function takes in list of GreekOrg objects and the frat/sorority name.
+	 * Then the function passes these to the FS_Search function to get a 2D
+	 * array for all the activities the house is involved in. The function
+	 * takes this result 2D array and sorts it by the number of members, then
+	 * adds the last three rows of the 2D array to a new 2D array and returns it.
+	 * 
+	 * Input: List of all GreekOrg objects created from csv file
+	 *        and the frat/sorority name as a string
+	 *        
+	 * Output: 2D ArrayList with each nested list containing
+	 *         [Activity name, Activity type, Number of members, Percentage of members]
+	 *         for the top 3 Activities that the given frat/sorority has the most members in
+	 *         
+	 */
 	public ArrayList<ArrayList<String>> FS_TopThree(ArrayList<GreekOrg> all_orgs, String house){
+		// Retrieve list of all activities and necessary info using FS_Search function
 		ArrayList<ArrayList<String>> result = FS_Search(all_orgs, house);
-		
-		return result;
+		// Sort 2D array by only the third element in the nested list (i.e. number of members)
+		Collections.sort(result, new Comparator<ArrayList<String>>() {    
+	        @Override
+	        public int compare(ArrayList<String> o1, ArrayList<String> o2) {
+	            return o1.get(2).compareTo(o2.get(2));
+	        }               
+		});
+		// Get the last three nested lists in the 2D result array
+		ArrayList<ArrayList<String>> sorted_result = new ArrayList<ArrayList<String>>();
+		for(int i = result.size()-1; i > result.size()-4; i--) {
+			sorted_result.add(new ArrayList<String>(Arrays.asList(result.get(i).get(0),result.get(i).get(1),result.get(i).get(2),result.get(i).get(3))));
+		}
+		return sorted_result;
 	}
 	
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-        
-        
         try {
         	String val1 = request.getParameter("option");
     		
@@ -156,10 +182,10 @@ public class Form1Servlet extends HttpServlet {
                 	
                 }
                 
-                // Test the FS_Search function, check output in HTML page
-                ArrayList<ArrayList<String>> query_result = FS_Search(all_orgs, "Alpha Gamma Delta");
+                // Test the FS_TopThree function, check output in HTML page
+                ArrayList<ArrayList<String>> query_result = FS_TopThree(all_orgs, "Alpha Gamma Delta");
                 String htmlResponse = "<html>";
-                for (List<String> list:query_result) {
+                for (ArrayList<String> list:query_result) {
                 	for (String x : list) {
                 		htmlResponse += x + ' ';
                 	}

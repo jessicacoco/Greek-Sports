@@ -7,6 +7,8 @@ import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -38,9 +40,9 @@ public class Form1Servlet extends HttpServlet {
 	 *         for each Activity that the given frat/sorority has at least 1 member in
 	 * 
 	 */
-	public ArrayList<List<String>> FS_Search(ArrayList<GreekOrg> all_orgs, String house){
+	public ArrayList<ArrayList<String>> FS_Search(ArrayList<GreekOrg> all_orgs, String house){
 		// 2D list to store name, type, number of members, and percent of members for each Activity
-		ArrayList<List<String>> result = new ArrayList<List<String>>();
+		ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
 		// Traverse list of GreekOrg objects
 		for(int i = 0; i < all_orgs.size(); i++) {
 			// If the current GreekOrg object's names is equal to house...
@@ -61,13 +63,27 @@ public class Form1Servlet extends HttpServlet {
 					// If there is at least 1 member in Activity...
 					if (num != 0) {
 						// Add entry that includes [Activity name, Activity type, Number of members, Percentage of members]
-						result.add(Arrays.asList(name,type,num_string,percentage));
+						result.add(new ArrayList<String>(Arrays.asList(name,type,num_string,percentage)));
 					}
 				}
 			}
 		}
+		// Sort 2D array by only the first element in the nested list (i.e. Acivity name)
+		Collections.sort(result, new Comparator<ArrayList<String>>() {    
+	        @Override
+	        public int compare(ArrayList<String> o1, ArrayList<String> o2) {
+	            return o1.get(0).compareTo(o2.get(0));
+	        }               
+		});
 		return result;
 	}
+	
+	public ArrayList<ArrayList<String>> FS_TopThree(ArrayList<GreekOrg> all_orgs, String house){
+		ArrayList<ArrayList<String>> result = FS_Search(all_orgs, house);
+		
+		return result;
+	}
+	
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -141,7 +157,7 @@ public class Form1Servlet extends HttpServlet {
                 }
                 
                 // Test the FS_Search function, check output in HTML page
-                ArrayList<List<String>> query_result = FS_Search(all_orgs, "Alpha Gamma Delta");
+                ArrayList<ArrayList<String>> query_result = FS_Search(all_orgs, "Alpha Gamma Delta");
                 String htmlResponse = "<html>";
                 for (List<String> list:query_result) {
                 	for (String x : list) {

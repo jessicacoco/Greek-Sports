@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,6 +24,50 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/Form1Servlet")
 public class Form1Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	
+	// Function returns a list of all fraternity and sorority names for Search dropdown
+	public ArrayList<String> FSNames(ArrayList<GreekOrg> all_orgs){
+		ArrayList<String> result = new ArrayList<String>();
+		// Traverse list of GreekOrg objects
+				for(int i = 0; i < all_orgs.size(); i++) {
+					// Retrieve name of GreekOrg
+					String house = all_orgs.get(i).getName();
+					// Add name of GreekOrg to result array
+					result.add(house);
+				}
+		// Sort result array alphabetically
+		Collections.sort(result);
+		return result;
+	}
+	
+	// Function returns a list of all varsity and club sports names for Search dropdown
+	public ArrayList<String> SportNames(ArrayList<GreekOrg> all_orgs){
+		ArrayList<String> result = new ArrayList<String>();
+		// Retrieve Activities list for current GreekOrg object
+		ArrayList<Activity> activities = all_orgs.get(0).getActivities();
+		// Traverse Activities list, adding each Sport name to result array
+		for(Activity a:activities) {
+			if(a.getActivityType().equals("Sport")) { result.add(a.getName()); }
+		}
+		// Sort result array alphabetically
+		Collections.sort(result);
+		return result;
+	}
+	
+	// Function returns a list of all club names for Search dropdown
+	public ArrayList<String> ClubNames(ArrayList<GreekOrg> all_orgs){
+		ArrayList<String> result = new ArrayList<String>();
+		// Retrieve Activities list for current GreekOrg object
+		ArrayList<Activity> activities = all_orgs.get(0).getActivities();
+		// Traverse Activities list, adding each Club name to result array
+		for(Activity a:activities) {
+			if(a.getActivityType().equals("Club")) { result.add(a.getName()); }
+		}
+		// Sort result array alphabetically
+		Collections.sort(result);
+		return result;
+	}
 	
 	/* 
 	 * Function takes in list of GreekOrg objects and the frat/sorority name.

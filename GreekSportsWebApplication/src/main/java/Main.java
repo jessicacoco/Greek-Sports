@@ -25,6 +25,13 @@ import javax.servlet.http.HttpServletResponse;
 public class Main {
 	public ArrayList<GreekOrg> all_orgs;
 	
+	// default constructor
+	public Main()
+	{
+		all_orgs = new ArrayList<GreekOrg>();
+	}
+	
+	// main function to parse csv file requests
     public ArrayList<GreekOrg> main(String[] args) {
     	HttpServletRequest request = args[0];
     	HttpServletResponse response = args[1];

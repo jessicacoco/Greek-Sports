@@ -32,7 +32,7 @@ public class Form1Servlet extends HttpServlet {
         		URL url = this.getServletContext().getResource("/Data_Feeds/test_sororities.csv");
         		InputStreamReader isr = new InputStreamReader(url.openStream());
             	BufferedReader reader = new BufferedReader(isr);
-            	ArrayList<GreekOrg> allorgs = parsed_objects.main(isr, reader);
+            	ArrayList<GreekOrg> allorgs = parsed_objects.main(isr, reader, "sorority");
                 /*
                  * How to test query functions:
                  * ArrayList<ArrayList<String>> query_result = FS_Search(all_orgs, "Alpha Omega Epsilon");

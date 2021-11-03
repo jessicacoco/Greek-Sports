@@ -275,7 +275,7 @@ public class Main {
 		}
 	
 	// main function to parse csv file requests
-    public ArrayList<GreekOrg> main(InputStreamReader isr, BufferedReader reader) {
+    public ArrayList<GreekOrg> main(InputStreamReader isr, BufferedReader reader, String type) {
         
         // read the first line with all of the activity names here
         String clubstring = null;
@@ -288,8 +288,8 @@ public class Main {
         	
         		// CODE TO MAKE OBJECTS FOR THE DATA IN EACH LINE
         		List<String> line_data = Arrays.asList(s.split("\\s*,\\s*")); // split by comma
-        		int frat_size = Integer.valueOf(line_data.get(27));
-        		Fraternity temp = new Fraternity(line_data.get(0), line_data.get(28), frat_size);
+        		int greek_size = Integer.valueOf(line_data.get(27));
+        		GreekOrg temp = new GreekOrg (line_data.get(0), line_data.get(28), greek_size, type);
         	
         		// add all of the club data into the frat object as an activity object
         		for(int i = 1; i < 27; i++) // start at 1 to skip the frat name

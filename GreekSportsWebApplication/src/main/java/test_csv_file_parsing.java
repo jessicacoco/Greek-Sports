@@ -32,12 +32,12 @@ public class test_csv_file_parsing {
 		URL url = this.getServletContext().getResource("/Data_Feeds/test_sororities.csv");
 		InputStreamReader isr = new InputStreamReader(url.openStream());
     	BufferedReader reader = new BufferedReader(isr);
-    	ArrayList<GreekOrg> allorgs = parsed_objects.main(isr, reader, "sorority");
+    	ArrayList<GreekOrg> allorgs = parsed_objects.main(isr, reader, "Sorority");
     	
     	// assertions that the allorgs list was made correctly
     	int num_sororities = allorgs.size();
     	assert(num_sororities == 6);
-    	System.out.println("All GreekOrgs were added");
+    	System.out.println("All sororities were added");
     	
     	// spot check that the names and types of sororities were added correctly
     	GreekOrg a_phi = allorgs.get(2);
@@ -67,6 +67,54 @@ public class test_csv_file_parsing {
     	assert(sigdelt_activities.get(1).getSize() == 1);
     	
     	System.out.println("All test sorority csv file tests passed sucessfully!");
+	}
+	
+	public void test_frats(HttpServletRequest request, HttpServletResponse response)
+	{
+		// reading in the mock fraternity data and doing the parsing
+		Main parsed_objects = new Main();
+		PrintWriter writer = response.getWriter();
+		URL url = this.getServletContext().getResource("/Data_Feeds/test_fraternities.csv");
+		InputStreamReader isr = new InputStreamReader(url.openStream());
+    	BufferedReader reader = new BufferedReader(isr);
+    	ArrayList<GreekOrg> allorgs = parsed_objects.main(isr, reader, "Fraternity");
+    	
+    	// assertions that the allorgs list was made correctly
+    	int num_frats = allorgs.size();
+    	assert(num_frats == 26);
+    	System.out.println("All Frats were added");
+    	
+    	// spot check that the names and types of frats were added correctly
+    	GreekOrg chi_phi = allorgs.get(5);
+    	assert(chi_phi.getName().equals("Chi Phi"));
+    	assert(chi_phi.getOrgType().equals("Fraternity"));
+    	
+    	GreekOrg lxa = allorgs.get(9);
+    	assert(lxa.getName().equals("Lambda Chi Alpha"));
+    	assert(lxa.getOrgType().equals("Fraternity"));
+    	
+    	System.out.println("All fraternity names and types were added correctly");
+    	
+    	// spot check that GreekOrg sororities have the correct activities
+    	ArrayList<Activity> chiphi_activities = chi_phi.getActivities();
+    	assert(chiphi_activities.size() == 26);
+    	assert(chiphi_activities.get(2).getName().equals("C_Rcquetball"));
+    	assert(chiphi_activities.get(2).getActivityType().equals("Club"));
+    	assert(chiphi_activities.get(2).getSize() == 2);
+    	assert(chiphi_activities.get(6).getName().equals("S_WaterPolo"));
+    	assert(chiphi_activities.get(6).getActivityType().equals("Sport"));
+    	assert(chiphi_activities.get(6).getSize() == 7);
+    	assert(chiphi_activities.get(21).getName().equals("S_Wrestling"));
+    	assert(chiphi_activities.get(21).getActivityType().equals("Sport"));
+    	assert(chiphi_activities.get(21).getSize() == 7);
+    	
+    	ArrayList<Activity> lxa_activities = lxa.getActivities();
+    	assert(lxa_activities.size() == 26);
+    	assert(lxa_activities.get(0).getName().equals("C_Crew"));
+    	assert(lxa_activities.get(0).getActivityType().equals("Club"));
+    	assert(lxa_activities.get(0).getSize() == 10);
+    	
+    	System.out.println("All test fraternity csv file tests passed sucessfully!");
 	}
 	
 }

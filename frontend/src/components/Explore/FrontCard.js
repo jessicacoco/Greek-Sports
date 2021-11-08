@@ -1,12 +1,18 @@
 import React from 'react';
 import { Card } from 'antd';
 
-function FrontCard() {
+import './FrontCard.css';
+
+
+function FrontCard({name, topThree}) {
+    var els = [];
+    for (let i = 0; i < topThree.length; i++) {
+        els.push(<p>{topThree[i]}</p>);
+    }
     return (
         <>
-        <Card style={{ width: 300 }}>
-            <p></p>
-
+        <Card title={name} style={{ width: 240 }} cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}>
+            {els}
         </Card>
         </>
     );

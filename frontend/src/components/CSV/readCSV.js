@@ -14,10 +14,13 @@ function readCSV(funcName, input) {
 
     console.log(csvData);
 
+    // down here you would do the same steps as you figure out for above but do for (var i = 1 instead of 0)
+    // ^ this makes sure you are skipping the first line when you read in fraternities so the columns aren't read again
+    // read fraternity CSV
+
     return csvData;
 }
-// make sure you are skipping the first line when you read in fraternities
-// change CSV file to look like this please: (it makes it easier to output to a readable file)
+// fyi, CSV file has been changed to look like this: (it makes it easier to output to a readable file)
 // "",C Crew,S Dance Team,C Racquetball,C Ballroom Dance,C Tae Kwon Do,S Rugby, S Water Polo,C Rudras,C Dance Club,C Dance Dance Revolution,C Fencing,C Karate,C Boxing,C Fishing,S Womens Soccer,C Judo,S Ski Team,C Outing Club,C Meitokukan Kendo Dojo,C Badminton,C Juggling Unicycling,S Wrestling,C Ski Snowboard Club,C Club Volleyball,S Womens Basketball,C Rifle,TOTAL, LOGO
 export default readCSV;
 

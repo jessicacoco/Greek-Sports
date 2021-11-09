@@ -43,7 +43,7 @@ function ResultsTable({results, name}) {
           title: 'Type',
           dataIndex: 'type',
           render: tag =>
-            <Tag color={tag == 'Club' ? 'geekblue' : 'volcano'} key={tag}>
+            <Tag color={tag === 'Club' ? 'geekblue' : 'volcano'} key={tag}>
                 {tag.toUpperCase()}
             </Tag>,
           filters: [

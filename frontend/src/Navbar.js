@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
@@ -10,7 +10,7 @@ function Navbar() {
                     <ul class="nav-center">
                         <li class="nav-link nav-left">
                             <Link to="/" className="navbar-logo">
-                                <img class="logo-image" src="./SportsLogoPractice.jpg"></img>
+                                <img class="logo-image" src="./SportsLogoPractice.jpg" alt="Sport Logo"></img>
                             </Link>
                         </li>
                         <li class="nav-link">

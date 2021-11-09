@@ -3,7 +3,7 @@ import { Row, Col, Tabs } from 'antd';
 import ResultsTable from '../ResultsTable';
 import SearchCard from '../Home/SearchCard';
 import Footer from '../Footer';
-import readCSV from '../CSV/readCSV';
+import readCSV from '../../utils/readCSV';
 import './Home.css';
 
 const { TabPane } = Tabs;
@@ -28,7 +28,7 @@ function Home() {
 
     var data = readCSV("allFS");
 
-    if (name.length == 0) {
+    if (name.length === 0) {
         return (
             <>
                 <Row justify="center">

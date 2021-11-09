@@ -4,8 +4,6 @@ import ContactUsForm from '../ContactUs/ContactUsForm';
 import Footer from '../Footer';
 import './ContactUs.css';
 
-const style = {background: '#0092ff'};
-
 function ContactUs() {
     return (
         <div class="contact-us">
@@ -17,7 +15,7 @@ function ContactUs() {
         <Row gutter={[16,24]}>
             <Col span={8} offset={4}>
                 <div class="contact-cols contact-icon-col">
-                <img class="contact-icon" src="./ContactUs_transparent.png"/>
+                <img class="contact-icon" src="./ContactUs_transparent.png" alt="Letter"/>
                 </div>
             </Col>
             <Col span={6}>

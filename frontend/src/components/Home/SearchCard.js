@@ -10,8 +10,8 @@ function SearchCard({ setSearchResults, setSearchName, type }) {
     const [value, setValue] = useState('');
 
     // make the DB call return it alpha sorted so I don't have to do that
-    var options = (type == "greek") ? ['Alpha Phi','Pi Beta Phi','Alpha Gamma Delta'] 
-    : (type == "sports") ? ['Women\'s Varsity Soccer','Crew','Club Hockey']
+    var options = (type === "greek") ? ['Alpha Phi','Pi Beta Phi','Alpha Gamma Delta'] 
+    : (type === "sports") ? ['Women\'s Varsity Soccer','Crew','Club Hockey']
     : ['SWE','Sole Survivors','Outdoors Club'];
 
     function onChange(val) {
@@ -35,8 +35,8 @@ function SearchCard({ setSearchResults, setSearchName, type }) {
                 value={value}
                 showSearch
                 style={{ width: 300 }}
-                placeholder={(type == "greek") ? "Select a fraternity/sorority" 
-                : (type == "sports") ? "Select a sport"
+                placeholder={(type === "greek") ? "Select a fraternity/sorority" 
+                : (type === "sports") ? "Select a sport"
                 : "Select a club"}
                 optionFilterProp="children"
                 onChange={onChange}

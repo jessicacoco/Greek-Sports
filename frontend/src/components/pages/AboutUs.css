@@ -16,8 +16,7 @@ h2 {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 2em;
     font-weight: 400;
-    margin: 10px;
-    margin-left: 20px;
+    margin: 10px 10px 10px 20px;
 }
 
 #creators-title {
@@ -31,4 +30,3 @@ p {
 .slant {
     background: linear-gradient(177deg, #012A4A 50%, white 30%)
 }
-

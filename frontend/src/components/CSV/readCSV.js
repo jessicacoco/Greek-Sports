@@ -33,6 +33,25 @@ function allFSQuery(csvData) {
   return arr;
 }
 
+function allFSExploreQuery(csvData) {
+  var arr = [];
+  for (let i = 1; i < csvData.length; i++) {
+      let name = csvData[i][0];
+      let logo = csvData[i][csvData[i].length-1];
+      arr.push([name, logo]);
+  }
+  arr.sort(function(x, y) {
+    if (x[0] < y[0]) {
+      return -1;
+    }
+    if (x[0] > y[0]) {
+      return 1;
+    }
+    return 0;
+  });
+  return arr;
+}
+
 function allClubsQuery(csvData) {
   var clubsAndSports = csvData[0];
   var arr = [];
@@ -90,20 +109,18 @@ function FSQueryTopThree(csvData, input) {
   var arr = [];
   for (let i = 0; i < csvData.length; i++) {
     if (csvData[i][0] == input) {
-      // name, type, number of members, % of members
+      // top 3 names & their num members (just for comparison in creating top 3)
       // not including initial "" or initial name
       for (let j = 1; j < csvData.length-2; j++) {
         let num = csvData[i][j];
         let name = csvData[0][j];
-        let type = csvData[i][0][0];
-        let perc = (num / csvData[i][csvData[i].length-2]) * 100;
-        arr.push([name, type, num, perc]);
+        arr.push([name, num]);
       }
       arr.sort(function(x, y) {
-        if (x[2] < y[2]) {
+        if (x[1] < y[1]) {
           return -1;
         }
-        if (x[2] > y[2]) {
+        if (x[1] > y[1]) {
           return 1;
         }
         return 0;

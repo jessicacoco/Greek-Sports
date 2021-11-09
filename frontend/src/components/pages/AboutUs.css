@@ -17,11 +17,11 @@ h2 {
     font-size: 2em;
     font-weight: 400;
     margin: 10px;
+    margin-left: 20px;
 }
 
 #creators-title {
     color: white;
-    margin: 10px;
 }
 
 p {

@@ -4,24 +4,22 @@ import ContactUsForm from '../ContactUs/ContactUsForm';
 import Footer from '../Footer';
 import './ContactUs.css';
 
-const style = {background: '#0092ff'};
-
 function ContactUs() {
     return (
-        <div class="contact-us">
+        <div className="contact-us">
         <Row>
             <Col span={24}>
-                <h1 class="header">HAVE SOME QUESTIONS?</h1>
+                <h1 className="header">HAVE SOME QUESTIONS?</h1>
             </Col>
         </Row>
         <Row gutter={[16,24]}>
             <Col span={8} offset={4}>
-                <div class="contact-cols contact-icon-col">
-                <img class="contact-icon" src="./ContactUs_transparent.png"/>
+                <div className="contact-cols contact-icon-col">
+                <img className="contact-icon" src="./ContactUs_transparent.png" alt="Letter"/>
                 </div>
             </Col>
             <Col span={6}>
-                <div class="contact-cols contact-form-col">
+                <div className="contact-cols contact-form-col">
                     <ContactUsForm/>
                 </div>
             </Col>

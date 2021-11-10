@@ -4,8 +4,8 @@ import './Footer.css';
 function Footer() {
     return (
         <>
-        <div class="footer">
-            <div class="footer-text">
+        <div className="footer">
+            <div className="footer-text">
                 © Greek Sports 2021
             </div>
         </div>

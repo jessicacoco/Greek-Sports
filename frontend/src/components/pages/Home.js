@@ -13,6 +13,7 @@ function Home() {
 
     function setSearchResults(values) {
         setResults(values);
+        console.log(values);
     }
 
     function setSearchName(value) {
@@ -25,8 +26,7 @@ function Home() {
         console.log('cleared',key);
     }
 
-
-    if (name.length == 0) {
+    if (name.length === 0) {
         return (
             <>
                 <Row justify="center">

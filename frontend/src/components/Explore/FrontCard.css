@@ -1,0 +1,16 @@
+@import '~antd/dist/antd.css';
+
+.front-card {
+    font-size: 14px;
+}
+
+.ant-card-head-title {
+    padding: 8px 0;
+    font-size: 64px;
+    text-align: center;
+}
+
+.ant-card-body {
+    padding: 12px 0;
+    text-align: center;
+}

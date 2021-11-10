@@ -3,7 +3,6 @@ import { Row, Col, Tabs } from 'antd';
 import ResultsTable from '../ResultsTable';
 import SearchCard from '../Home/SearchCard';
 import Footer from '../Footer';
-import readCSV from '../../utils/readCSV';
 import './Home.css';
 
 const { TabPane } = Tabs;
@@ -14,6 +13,7 @@ function Home() {
 
     function setSearchResults(values) {
         setResults(values);
+        console.log(values);
     }
 
     function setSearchName(value) {
@@ -25,8 +25,6 @@ function Home() {
         setResults([]);
         console.log('cleared',key);
     }
-
-    var data = readCSV("allFS");
 
     if (name.length === 0) {
         return (
@@ -45,9 +43,6 @@ function Home() {
                             </TabPane>
                         </Tabs>
                     </Col>
-                </Row>
-                <Row>
-                    <p>{data}</p>
                 </Row>
                 <Row>
                     <Col span={24}>

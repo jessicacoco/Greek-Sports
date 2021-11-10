@@ -1,5 +1,7 @@
 
-function readCSV(funcName, input) {
+// fyi, CSV file has been changed to look like this: (it makes it easier to output to a readable file)
+// "",C Crew,S Dance Team,C Racquetball,C Ballroom Dance,C Tae Kwon Do,S Rugby, S Water Polo,C Rudras,C Dance Club,C Dance Dance Revolution,C Fencing,C Karate,C Boxing,C Fishing,S Womens Soccer,C Judo,S Ski Team,C Outing Club,C Meitokukan Kendo Dojo,C Badminton,C Juggling Unicycling,S Wrestling,C Ski Snowboard Club,C Club Volleyball,S Womens Basketball,C Rifle,TOTAL, LOGO
+export function readCSV() {
     // read sorority CSV
     const request = new XMLHttpRequest();  
     request.open("GET", "./sororities.csv", false);   
@@ -22,20 +24,15 @@ function readCSV(funcName, input) {
     
     const data = sororityData.concat(fraternityData);
 
-    console.log(ClubAndSportQuery(data, 'Rugby', true));
-
     return data;
 }
-// fyi, CSV file has been changed to look like this: (it makes it easier to output to a readable file)
-// "",C Crew,S Dance Team,C Racquetball,C Ballroom Dance,C Tae Kwon Do,S Rugby, S Water Polo,C Rudras,C Dance Club,C Dance Dance Revolution,C Fencing,C Karate,C Boxing,C Fishing,S Womens Soccer,C Judo,S Ski Team,C Outing Club,C Meitokukan Kendo Dojo,C Badminton,C Juggling Unicycling,S Wrestling,C Ski Snowboard Club,C Club Volleyball,S Womens Basketball,C Rifle,TOTAL, LOGO
-export default readCSV;
 
 /**
  * Given the read in sorority/fraternity data, returns their names sorted
  * @param csvData The data read in from the CSV 
  * @returns A sorted list of sorority and fraternity names
  */
-function allFSQuery(csvData) {
+export function allFSQuery(csvData) {
   var arr = [];
   for (let i = 1; i < csvData.length; i++) {
       arr.push(csvData[i][0]);
@@ -49,7 +46,7 @@ function allFSQuery(csvData) {
  * @param csvData The data read in from the CSV
  * @returns A sorted array of name and logo sorted by name
  */
-function allFSExploreQuery(csvData) {
+export function allFSExploreQuery(csvData) {
   var arr = [];
   for (let i = 1; i < csvData.length; i++) {
       let name = csvData[i][0];
@@ -74,7 +71,7 @@ function allFSExploreQuery(csvData) {
  * @param sports Whether or not to search for clubs, if false searches for clubs
  * @returns All the clubs or sports sorted
  */
-function activityQuery(csvData, sports) {
+export function activityQuery(csvData, sports) {
   var clubsAndSports = csvData[0];
   var arr = [];
   for (let i = 0; i < clubsAndSports.length; i++) {
@@ -98,7 +95,7 @@ function activityQuery(csvData, sports) {
  * @param {boolean} filterZero Whether or not to filter activities with 0 participants out
  * @returns An array in the form [activity, type of activity, number of members, percent of members]
  */
-function FSQuery(csvData, input, filterZero) {
+export function FSQuery(csvData, input, filterZero) {
   // input = "Alpha Gamma Delta"
   const arr = [];
   for (let i = 0; i < csvData.length; i++) {
@@ -106,8 +103,9 @@ function FSQuery(csvData, input, filterZero) {
       // name, type, number of members, % of members
       // not including initial "" or initial name
       for (let j = 1; j < csvData[0].length-2; j++) {
-        const name = csvData[0][j];
+        let name = csvData[0][j];
         const type = name && name[0] === 'S' ? 'Sport' : 'Club';
+        name = name.trim().substring(2);
         const num = parseInt(csvData[i][j]);
         if (filterZero && num === 0) {
           continue;
@@ -128,7 +126,7 @@ function FSQuery(csvData, input, filterZero) {
  * @param {boolean} filterZero Whether or not to filter out events with 0 members
  * @returns The top 3 activities for the given input
  */
-function FSQueryTopThree(csvData, input, filterZero) {
+export function FSQueryTopThree(csvData, input, filterZero) {
   // input = "Alpha Gamma Delta"
   const allActivities = FSQuery(csvData, input, filterZero);
   // Sorts activities by number of members
@@ -145,7 +143,7 @@ function FSQueryTopThree(csvData, input, filterZero) {
  * @param {boolean} filterZero whether or not to filter out zeroes
  * @returns A list of all sorority and fraternities for that activity
  */
-function ClubAndSportQuery(csvData, input, filterZero) {
+export function ClubAndSportQuery(csvData, input, filterZero) {
   // input = "Ballroom Dance" or "Womens Soccer"
   var arr = [];
   // end = the last index of the sororities
@@ -158,10 +156,10 @@ function ClubAndSportQuery(csvData, input, filterZero) {
         let name = csvData[j][0];
         var type = '';
         if (j < end) {
-          type = 'S';
+          type = 'Sorority';
         }
         else {
-          type = 'F';
+          type = 'Fraternity';
         }
         let num = parseInt(csvData[j][i]);
         if (num === 0 && filterZero) {
@@ -174,4 +172,26 @@ function ClubAndSportQuery(csvData, input, filterZero) {
     }
   }
   return arr;
+}
+
+/**
+ * Normalize returned query data to be in the expected form for ResultsTable.js
+ * @param {string[][]} data 2d array of data. From the above query results
+ * @returns A list of objects which can be read in and parsed by the table
+ */
+export function normalizeTableData(data) {
+  if (data.length === 0 || data[0].length !== 4) {
+    console.warn("Invalid data passed to normalizeTableData");
+    return [];
+  }
+  
+  return data.map((row, index) => {
+    return {
+      key: (index + 1).toString(),
+      name: row[0],
+      type: row[1],
+      number: row[2],
+      percent: Math.floor(row[3])
+    }
+  });
 }

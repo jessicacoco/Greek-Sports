@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './SearchCard.css';
 import { Select, Button } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
+import { activityQuery, readCSV, allFSQuery, normalizeTableData, FSQuery, ClubAndSportQuery } from '../../utils/readCSV';
 
 const { Option } = Select;
 
@@ -9,10 +10,16 @@ const { Option } = Select;
 function SearchCard({ setSearchResults, setSearchName, type }) {
     const [value, setValue] = useState('');
 
-    // make the DB call return it alpha sorted so I don't have to do that
-    var options = (type === "greek") ? ['Alpha Phi','Pi Beta Phi','Alpha Gamma Delta'] 
-    : (type === "sports") ? ['Women\'s Varsity Soccer','Crew','Club Hockey']
-    : ['SWE','Sole Survivors','Outdoors Club'];
+    // Reads the search options from the database (in this case the CSV file)
+    const csvData = readCSV();
+    let options = [];
+    if (type === "greek") {
+        options = allFSQuery(csvData);
+    } else if (type === "sports") {
+        options = activityQuery(csvData, true);
+    } else {
+        options = activityQuery(csvData, false);
+    }
 
     function onChange(val) {
         setValue(val);
@@ -24,8 +31,12 @@ function SearchCard({ setSearchResults, setSearchName, type }) {
         // put request results in and redirect
         //window.location.href = "http://stackoverflow.com";
         setSearchName(value);
+        if (type === "greek") {
+            setSearchResults(normalizeTableData(FSQuery(csvData, value, true)));
+        } else {
+            setSearchResults(normalizeTableData(ClubAndSportQuery(csvData, value, true)));
+        }
         setValue('');
-        console.log('search:', value);
     };
 
     return (

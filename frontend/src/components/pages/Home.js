@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Row, Col, Tabs } from 'antd';
-import ResultsTable from '../ResultsTable';
+import ResultsTable from '../Home/ResultsTable';
 import SearchCard from '../Home/SearchCard';
 import Footer from '../Footer';
 import './Home.css';

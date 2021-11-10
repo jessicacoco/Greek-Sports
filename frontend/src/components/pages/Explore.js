@@ -1,13 +1,19 @@
 import React from 'react';
 import FrontCard from '../Explore/FrontCard';
 import BackCard from '../Explore/BackCard';
+import Footer from '../Footer';
+import { Row, Col } from 'antd';
 import './Explore.css';
 
 function Explore() {
 
-    let data = [['Pi Beta Phi', 'ΠΒΦ', 'RPI Women\'s Soccer', 'Outdoors Club', 'Skiing'],
-    ['Alpha Gamma Delta', 'ΑΓΔ', 'RPI Women\'s Soccer', 'Outdoors Club', 'Skiing'],
-    ['Alpha Phi', 'ΑΦ', 'RPI Women\'s Soccer', 'Outdoors Club', 'Skiing']];
+    // call FSExplore query here
+    let data = [['Pi Beta Phi', 'ΠΒΦ'],
+    ['Alpha Gamma Delta', 'ΑΓΔ'],
+    ['Alpha Phi', 'ΑΦ'],
+    ['Pi Beta Phi', 'ΠΒΦ'],
+    ['Alpha Gamma Delta', 'ΑΓΔ'],
+    ['Alpha Phi', 'ΑΦ']];
 
     var cards = [];
     for (let i = 0; i < data.length; i++) {
@@ -18,7 +24,7 @@ function Explore() {
                     <FrontCard name={data[i][0]} letters={data[i][1]}/>
                 </div>
                 <div class="flip-card-back">
-                    <BackCard name={data[i][0]} topThree={data[i]}/>
+                    <BackCard name={data[i][0]}/>
                 </div>
             </div>
         </div>);
@@ -26,6 +32,11 @@ function Explore() {
     return (
         <>
         {cards}
+        <Row>
+            <Col span={24}>
+                <Footer />
+            </Col>
+        </Row>
         </>
     );
 }

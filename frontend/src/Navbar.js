@@ -10,7 +10,7 @@ function Navbar() {
                     <ul className="nav-center">
                         <li className="nav-link nav-left">
                             <Link to="/" className="navbar-logo">
-                                <img className="logo-image" src="./SportsLogoPractice.jpg" alt="Sport Logo"></img>
+                                <img className="logo-image" src="./GS_Logo 1.jpg" alt="Application logo"></img>
                             </Link>
                         </li>
                         <li className="nav-link">

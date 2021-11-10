@@ -1,6 +1,8 @@
 import React from 'react';
 import FrontCard from '../Explore/FrontCard';
 import BackCard from '../Explore/BackCard';
+import Footer from '../Footer';
+import { Row, Col } from 'antd';
 import './Explore.css';
 
 function Explore() {
@@ -30,6 +32,11 @@ function Explore() {
     return (
         <>
         {cards}
+        <Row>
+            <Col span={24}>
+                <Footer />
+            </Col>
+        </Row>
         </>
     );
 }

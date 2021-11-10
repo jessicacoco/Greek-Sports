@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'antd';
+import { Card, Button } from 'antd';
 
 import './BackCard.css';
 
@@ -17,9 +17,14 @@ function BackCard({name}) {
         <>
         <Card title={name} style={{height: '240px'}}>
             {els}
+            <Button type="primary" shape="round" href={"/","result"}>
+                More Info
+            </Button>
         </Card>
         </>
     );
 }
+
+// button - change type to primary for blue
 
 export default BackCard;

@@ -1,5 +1,4 @@
 import './App.css';
-import { Button } from 'antd';
 import Navbar from './Navbar';
 import Home from './components/pages/Home';
 import AboutUs from './components/pages/AboutUs';

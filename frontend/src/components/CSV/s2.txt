@@ -1,7 +1,0 @@
-"",C_Crew,S_DanceTeam,C_Racquetball,C_BallroomDance,C_TaeKwonDo,S_Rugby, S_WaterPolo,C_Rudras,C_DanceClub,C_DanceDanceRevolution,C_Fencing,C_Karate,C_Boxing,C_Fishing,S_WomenSoccer,C_Judo,S_SkiTeam,C_Outing,C_MeitokukanKendoDojo,C_Badminton,C_JugglingUnicycling,S_Wrestling,C_SkiSnowboardClub,C_ClubVolleyball,S_WomenBasketball,C_Rifle,TOTAL, LOGO
-Alpha Gamma Delta,1,5,0,3,0,0,2,0,4,0,0,0,0,0,8,0,1,2,0,0,0,0,2,2,6,0,29,AΓΔ
-Alpha Omega Epsilon,0,7,0,2,0,0,2,0,6,0,0,0,0,0,8,0,1,2,0,0,0,0,2,2,4,0,25,AΩE
-Alpha Phi,0,9,0,4,0,6,4,0,10,0,1,0,0,0,10,0,2,4,0,1,0,0,4,2,8,0,50,AΦ
-Omega Phi Beta,0,2,0,1,0,0,2,0,3,0,1,0,0,0,3,0,0,1,0,0,0,0,2,2,3,0,25,ΩΦB
-Pi Beta Phi,1,1,0,2,0,0,2,0,2,0,0,0,0,0,2,0,0,3,0,0,0,0,2,2,2,0,20,ΠBΦ
-Sigma Delta,0,1,0,4,0,0,0,0,1,0,0,0,0,0,4,0,0,1,0,0,0,0,2,2,2,0,22,ΣΔ

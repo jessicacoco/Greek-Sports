@@ -1,30 +1,36 @@
 
+/**
+ * Normalizes CSV data into an array
+ * @param {string} csvText The text from a csv file
+ * @param {boolean} skipHeader Whether or not to skip the header
+ * @returns The csv as an array
+ */
+export function cleanData(csvText, skipHeader) {
+  const csvData = [];
+  const jsonObject = csvText.split(/\r?\n|\r/);
+  for (let i = skipHeader ? 1 : 0; i < jsonObject.length; i++) {
+    csvData.push(jsonObject[i].split(','));
+  }
+  return csvData;
+};
+
 // fyi, CSV file has been changed to look like this: (it makes it easier to output to a readable file)
 // "",C Crew,S Dance Team,C Racquetball,C Ballroom Dance,C Tae Kwon Do,S Rugby, S Water Polo,C Rudras,C Dance Club,C Dance Dance Revolution,C Fencing,C Karate,C Boxing,C Fishing,S Womens Soccer,C Judo,S Ski Team,C Outing Club,C Meitokukan Kendo Dojo,C Badminton,C Juggling Unicycling,S Wrestling,C Ski Snowboard Club,C Club Volleyball,S Womens Basketball,C Rifle,TOTAL, LOGO
 export function readCSV() {
-    // read sorority CSV
-    const request = new XMLHttpRequest();  
-    request.open("GET", "./sororities.csv", false);   
-    request.send(null);
+  // read sorority CSV
+  const request = new XMLHttpRequest();
+  request.open("GET", "./sororities.csv", false);
+  request.send(null);
 
-    const cleanData = (request, skipHeader) => {
-      const csvData = [];
-      const jsonObject = request.responseText.split(/\r?\n|\r/);
-      for (let i = skipHeader ? 1 : 0; i < jsonObject.length; i++) {
-        csvData.push(jsonObject[i].split(','));
-      }
-      return csvData;
-    };
+  const sororityData = cleanData(request.responseText, false);
+  request.open("GET", "./fraternities.csv", false);
+  request.send(null);
 
-    const sororityData = cleanData(request);
-    request.open("GET", "./fraternities.csv", false);   
-    request.send(null);
-    
-    const fraternityData = cleanData(request, true);
-    
-    const data = sororityData.concat(fraternityData);
+  const fraternityData = cleanData(request.responseText, true);
 
-    return data;
+  const data = sororityData.concat(fraternityData);
+
+  return data;
 }
 
 /**
@@ -35,7 +41,7 @@ export function readCSV() {
 export function allFSQuery(csvData) {
   var arr = [];
   for (let i = 1; i < csvData.length; i++) {
-      arr.push(csvData[i][0]);
+    arr.push(csvData[i][0]);
   }
   arr.sort();
   return arr;
@@ -49,11 +55,11 @@ export function allFSQuery(csvData) {
 export function allFSExploreQuery(csvData) {
   var arr = [];
   for (let i = 1; i < csvData.length; i++) {
-      let name = csvData[i][0];
-      let logo = csvData[i][csvData[i].length-1];
-      arr.push([name, logo]);
+    let name = csvData[i][0];
+    let logo = csvData[i][csvData[i].length - 1];
+    arr.push([name, logo]);
   }
-  arr.sort(function(x, y) {
+  arr.sort(function (x, y) {
     if (x[0] < y[0]) {
       return -1;
     }
@@ -75,7 +81,7 @@ export function activityQuery(csvData, sports) {
   var clubsAndSports = csvData[0];
   var arr = [];
   for (let i = 0; i < clubsAndSports.length; i++) {
-    
+
     if (sports ? clubsAndSports[i][0] === 'S' : clubsAndSports[i][0] === 'C') {
       // ex. C Ballroom Dance
       let word = clubsAndSports[i];
@@ -102,7 +108,7 @@ export function FSQuery(csvData, input, filterZero) {
     if (csvData[i][0] === input) {
       // name, type, number of members, % of members
       // not including initial "" or initial name
-      for (let j = 1; j < csvData[0].length-2; j++) {
+      for (let j = 1; j < csvData[0].length - 2; j++) {
         let name = csvData[0][j];
         const type = name && name[0] === 'S' ? 'Sport' : 'Club';
         name = name.trim().substring(2);
@@ -110,7 +116,7 @@ export function FSQuery(csvData, input, filterZero) {
         if (filterZero && num === 0) {
           continue;
         }
-        const perc = (num / csvData[i][csvData[i].length-2]) * 100;
+        const perc = (num / csvData[i][csvData[i].length - 2]) * 100;
         arr.push([name, type, num, perc]);
       }
       return arr;
@@ -130,7 +136,7 @@ export function FSQueryTopThree(csvData, input, filterZero) {
   // input = "Alpha Gamma Delta"
   const allActivities = FSQuery(csvData, input, filterZero);
   // Sorts activities by number of members
-  allActivities.sort((a,b) => b[2] - a[2]);
+  allActivities.sort((a, b) => b[2] - a[2]);
 
   // Returns the top 3 activities
   return allActivities.slice(0, 3);
@@ -165,7 +171,7 @@ export function ClubAndSportQuery(csvData, input, filterZero) {
         if (num === 0 && filterZero) {
           continue;
         }
-        let perc = (num / csvData[j][csvData[0].length-2]) * 100;
+        let perc = (num / csvData[j][csvData[0].length - 2]) * 100;
         arr.push([name, type, num, perc]);
       }
       return arr;
@@ -184,7 +190,7 @@ export function normalizeTableData(data) {
     console.warn("Invalid data passed to normalizeTableData");
     return [];
   }
-  
+
   return data.map((row, index) => {
     return {
       key: (index + 1).toString(),

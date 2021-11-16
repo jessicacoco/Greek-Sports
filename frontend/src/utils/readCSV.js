@@ -13,6 +13,7 @@ export function readCSV() {
       for (let i = skipHeader ? 1 : 0; i < jsonObject.length; i++) {
         csvData.push(jsonObject[i].split(','));
       }
+      console.log(csvData);
       return csvData;
     };
 

@@ -4,16 +4,13 @@ import BackCard from '../Explore/BackCard';
 import Footer from '../Footer';
 import { Row, Col } from 'antd';
 import './Explore.css';
+import { activityQuery, readCSV, allFSExploreQuery, normalizeTableData, FSQuery, ClubAndSportQuery } from '../../utils/readCSV';
 
 function Explore() {
 
     // call FSExplore query here
-    let data = [['Pi Beta Phi', 'ΠΒΦ'],
-    ['Alpha Gamma Delta', 'ΑΓΔ'],
-    ['Alpha Phi', 'ΑΦ'],
-    ['Pi Beta Phi', 'ΠΒΦ'],
-    ['Alpha Gamma Delta', 'ΑΓΔ'],
-    ['Alpha Phi', 'ΑΦ']];
+    const csvData = readCSV();
+    let data = allFSExploreQuery(csvData);
 
     var cards = [];
     for (let i = 0; i < data.length; i++) {

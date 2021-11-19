@@ -32,8 +32,8 @@ describe('All FS Query Tests', () => {
 });
 
 describe('FSQueryTopThree Tests', () => {
+    const csvData = mockReadCSVNode();
     test('Top Three for AGD', () => {
-        const csvData = mockReadCSVNode();
         const topthree = FSQueryTopThree(csvData, "Alpha Gamma Delta", true);
         expect(topthree.length).toBe(3); // top three function should return ONLY 3 things
         // the top 3 for agd are womens soccer, womens basketball, and dance team
@@ -41,4 +41,29 @@ describe('FSQueryTopThree Tests', () => {
         expect(topthree[1][0]).toBe('Womens Basketball');
         expect(topthree[2][0]).toBe('Dance Team');
     });
+    test('Top Three for Alpha Phi', () => {
+        const topthree = FSQueryTopThree(csvData, "Alpha Phi", true);
+        expect(topthree.length).toBe(3); // top three function should return ONLY 3 things
+        // the top 3 for agd are dance club, womens soccer, and dance team
+        expect(topthree[0][0]).toBe('Dance Club');
+        expect(topthree[1][0]).toBe('Womens Soccer');
+        expect(topthree[2][0]).toBe('Dance Team');
+    });
+    test('Top Three for Theta Xi', () => {
+        const topthree = FSQueryTopThree(csvData, "Theta Xi", true);
+        expect(topthree.length).toBe(3); // top three function should return ONLY 3 things
+        // the top 3 for theta xi are water polo, wrestling, and judo
+        expect(topthree[0][0]).toBe('Water Polo');
+        expect(topthree[1][0]).toBe('Wrestling');
+        expect(topthree[2][0]).toBe('Judo');
+    })
+    test('Top Three for Pi Delta Psi', () => {
+        const topthree = FSQueryTopThree(csvData, "Pi Delta Psi", true);
+        expect(topthree.length).toBe(3); // top three function should return ONLY 3 things
+        // the top 3 of pi delta psi are wrestling, judo, and club volleyball
+        expect(topthree[0][0]).toBe('Wrestling');
+        expect(topthree[1][0]).toBe('Judo');
+        expect(topthree[2][0]).toBe('Club Volleyball');
+    })
+
 });

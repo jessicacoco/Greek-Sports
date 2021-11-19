@@ -12,7 +12,16 @@ function BackCard({name}) {
     let data = FSQueryTopThree(csvData, name, false);
 
     for (let i = 0; i < data.length; i++) {
-        els.push(<p>{num}. {data[i][0]}</p>);
+        let name = data[i][0]
+        els.push(<Link to={{
+            pathname:"/result", 
+            resultProps:{
+                type: 'cs',
+                name: name
+            } }}>
+                <p>{num}. {name}</p>
+            </Link>
+            );
         num++;
     }
 
@@ -20,11 +29,15 @@ function BackCard({name}) {
         <>
         <Card title={name} style={{height: '240px'}}>
             {els}
+            <br></br>
             <Link to={{
                 pathname:"/result", 
                 resultProps:{
-                    name: {name}
-                } }}>
+                    type: 'fs',
+                    name: name
+                }
+            }}
+            >
                 <Button type="primary" shape="round">
                     More Info
                 </Button>

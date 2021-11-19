@@ -1,11 +1,12 @@
 import React from 'react';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, message } from 'antd';
 import './ContactUsForm.css';
 
 function ContactUsForm() {
 
     const onFinish = (values) => {
         console.log('Success:', values);
+        message.success('Form submitted');
       };
     
     const onFinishFailed = (errorInfo) => {

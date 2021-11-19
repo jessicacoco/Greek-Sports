@@ -4,7 +4,7 @@ import { Row, Col } from 'antd';
 import Footer from '../Footer';
 import './Result.css';
 import ResultsTable from '../Home/ResultsTable';
-import { activityQuery, readCSV, allFSQuery, normalizeTableData, FSQuery, ClubAndSportQuery } from '../../utils/readCSV';
+import { readCSV, normalizeTableData, FSQuery } from '../../utils/readCSV';
 
 function Result(props) {
     // Reads the search options from the database (in this case the CSV file)

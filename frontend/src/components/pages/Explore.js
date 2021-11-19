@@ -4,7 +4,7 @@ import BackCard from '../Explore/BackCard';
 import Footer from '../Footer';
 import { Row, Col } from 'antd';
 import './Explore.css';
-import { activityQuery, readCSV, allFSExploreQuery, normalizeTableData, FSQuery, ClubAndSportQuery } from '../../utils/readCSV';
+import { readCSV, allFSExploreQuery } from '../../utils/readCSV';
 
 function Explore() {
 

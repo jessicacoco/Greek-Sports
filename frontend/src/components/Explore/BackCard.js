@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import { Card, Button } from 'antd';
-import { FSQueryTopThree, readCSV, allFSExploreQuery, normalizeTableData, FSQuery, ClubAndSportQuery } from '../../utils/readCSV';
+import { FSQueryTopThree, readCSV } from '../../utils/readCSV';
 import './BackCard.css';
 
 function BackCard({name}) {

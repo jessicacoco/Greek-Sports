@@ -32,7 +32,8 @@ function ResultsTable({ results, name }) {
   const columns = [{
     title: 'Name',
     dataIndex: 'name',
-    sorter: (a, b) => a.name.length - b.name.length,
+    sorter: (a, b) => a.name.localeCompare(b.name),
+    showSorterTooltip: false,
   },
   {
     title: 'Type',
@@ -47,13 +48,15 @@ function ResultsTable({ results, name }) {
   {
     title: 'Number of Members',
     dataIndex: 'number',
-    sorter: (a, b) => a.number - b.number,
+    sorter: (a, b) => b.number - a.number,
+    showSorterTooltip: false,
   },
   {
     title: 'Percentage of Members',
     dataIndex: 'percent',
     render: percent => percent + "%",
-    sorter: (a, b) => a.percent - b.percent,
+    sorter: (a, b) => b.percent - a.percent,
+    showSorterTooltip: false,
   },
   ];
 

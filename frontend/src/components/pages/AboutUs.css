@@ -1,1 +1,32 @@
 @import '~antd/dist/antd.css';
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;400;500;600&display=swap');
+
+/* override default border from ant design */
+/* easier way: delete ant-card-bordered class from html */
+.ant-card-bordered {
+    border: none;
+}
+
+/* override default background from ant design components */
+.ant-card, .ant-row, .ant-card-body, .ant-col {
+    background: none;
+}
+
+h2 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 2em;
+    font-weight: 400;
+    margin: 10px 10px 10px 20px;
+}
+
+#creators-title {
+    color: white;
+}
+
+p {
+    margin: 0 20px;
+}
+
+.slant {
+    background: linear-gradient(177deg, #012A4A 50%, white 30%)
+}

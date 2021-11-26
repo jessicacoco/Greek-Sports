@@ -9,33 +9,36 @@ function AboutUs() {
     var endb = "Backend Developer";
     var endf = "Frontend Developer";
     var year = "Class of 2022";
+    var younger_year = "Class of 2023";
     return (
         <>
-            <Row>
-                <Col>
-                    <h2>OUR CREATORS</h2>
-                </Col>
-            </Row>
-            <Row>
-                <Col span={4}>
-                    <ProfileCard name="Chyna Cobbs" end={endb} year={year} src="./ChynaCobbs.png"/>
-                </Col>
-                <Col span={4}>
-                    <ProfileCard name="Jessica Coco" end={endb} year={year} src="./JessicaCoco.jpg"/>
-                </Col>
-                <Col span={4}>
-                <ProfileCard name="Jonathan Psaras" end={endb} year={year} src="./JonPsaras.jpg"/>
-                </Col>
-                <Col span={4}>
-                <ProfileCard name="Emma Skantze" end={endf} year={year} src="./EmmaSkantze.jpg"/>
-                </Col>
-                <Col span={4}>
-                <ProfileCard name="Erin Song" end={endf} year={year} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"/>
-                </Col>
-                <Col span={4}>
-                <ProfileCard name="Chace Woods" end={endf} year={year} src="./ChaceWoods.jpg"/>
-                </Col>
-            </Row>
+            <div class="slant">
+                <Row>
+                    <Col>
+                        <h2 id="creators-title">OUR CREATORS</h2>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span={4}>
+                        <ProfileCard name="Chyna Cobbs" end={endb} year={year} src="./ChynaCobbs.png"/>
+                    </Col>
+                    <Col span={4}>
+                        <ProfileCard name="Jessica Coco" end={endb} year={younger_year} src="./JessicaCoco.jpg"/>
+                    </Col>
+                    <Col span={4}>
+                    <ProfileCard name="Jonathan Psaras" end={endb} year={year} src="./JonPsaras.jpg"/>
+                    </Col>
+                    <Col span={4}>
+                    <ProfileCard name="Emma Skantze" end={endf} year={year} src="./EmmaSkantze.jpg"/>
+                    </Col>
+                    <Col span={4}>
+                    <ProfileCard name="Erin Song" end={endf} year={year} src="./ErinSong.jpeg"/>
+                    </Col>
+                    <Col span={4}>
+                    <ProfileCard name="Chace Woods" end={endf} year={year} src="./ChaceWoods.jpg"/>
+                    </Col>
+                </Row>
+            </div>
             <Row>
                 <Col>
                     <h2>OUR STORY</h2>

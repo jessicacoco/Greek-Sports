@@ -1,7 +1,7 @@
 @import '~antd/dist/antd.css';
    
 .navbar {
-  background-color: #2a2a2a;
+  background-color: #012A4A;
   height: 80px;
   text-align: center;
   font-size: 1.2rem;
@@ -14,7 +14,7 @@
 }
 
 .navbar li {
-    display: inline-block;
+    display: block;
     float: right;
     margin-right: 5px;
 }
@@ -36,7 +36,8 @@
 .navbar-logo {
   color: #fff;
   justify-self: start;
-  margin-left: 20px;
+  line-height: 60px;
+  margin-left: 5px;
   cursor: pointer;
   text-decoration: none;
   font-size: 2rem;

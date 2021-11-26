@@ -1,11 +1,15 @@
 @import '~antd/dist/antd.css';
 
 .profileImage {
-    max-width: 100%;
-    height: auto;
+    min-height: 150px;
+    height: 150px;
+    min-width: 150px;
+    width: 150px;
+    object-fit: cover; /* unwarps pictures */
     border-radius: 50%;
 }
 
 .profileName {
     font-weight: bold;
+    margin-top: 10px;
 }

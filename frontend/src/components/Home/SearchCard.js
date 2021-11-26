@@ -1,40 +1,53 @@
 import React, { useState } from 'react';
-import { Redirect } from "react-router-dom";
 import './SearchCard.css';
 import { Select, Button } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
+import { activityQuery, readCSV, allFSQuery, normalizeTableData, FSQuery, ClubAndSportQuery } from '../../utils/readCSV';
 
 const { Option } = Select;
 
 
-function SearchCard({ setSearchResults, results, type }) {
+function SearchCard({ setSearchResults, setSearchName, type }) {
     const [value, setValue] = useState('');
 
-    // make the DB call return it alpha sorted so I don't have to do that
-    var options = (type == "greek") ? ['Alpha Phi','Pi Beta Phi','Alpha Gamma Delta'] 
-    : (type == "sports") ? ['Women\'s Varsity Soccer','Crew','Club Hockey']
-    : ['SWE','Sole Survivors','Outdoors Club'];
+    // Reads the search options from the database (in this case the CSV file)
+    const csvData = readCSV();
+    let options = [];
+    if (type === "greek") {
+        options = allFSQuery(csvData);
+    } else if (type === "sports") {
+        options = activityQuery(csvData, true);
+    } else {
+        options = activityQuery(csvData, false);
+    }
 
-    function onChange(value) {
-        setValue(value);
-        console.log(`selected ${value}`);
+    function onChange(val) {
+        setValue(val);
+        console.log('selected:', value);
     };
 
-    function onSearch(val) {
+    function onSearch() {
         // call search DB request here using value
         // put request results in and redirect
         //window.location.href = "http://stackoverflow.com";
-        console.log('search:', val);
+        setSearchName(value);
+        if (type === "greek") {
+            setSearchResults(normalizeTableData(FSQuery(csvData, value, true)));
+        } else {
+            setSearchResults(normalizeTableData(ClubAndSportQuery(csvData, value, true)));
+        }
+        setValue('');
     };
 
     return (
         <>
         <div className="search-card">
             <Select
+                value={value}
                 showSearch
                 style={{ width: 300 }}
-                placeholder={(type == "greek") ? "Select a fraternity/sorority" 
-                : (type == "sports") ? "Select a sport"
+                placeholder={(type === "greek") ? "Select a fraternity/sorority" 
+                : (type === "sports") ? "Select a sport"
                 : "Select a club"}
                 optionFilterProp="children"
                 onChange={onChange}
@@ -48,7 +61,7 @@ function SearchCard({ setSearchResults, results, type }) {
                     </Option>
                 ))}
             </Select>
-            <Button type="primary" icon={<SearchOutlined />} onClick={onSearch(value)}>
+            <Button type="primary" icon={<SearchOutlined />} onClick={onSearch}>
                 Search
             </Button>
         </div>

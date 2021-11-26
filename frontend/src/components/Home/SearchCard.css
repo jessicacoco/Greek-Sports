@@ -2,4 +2,6 @@
 
 .search-card {
     background: white;
+    display: flex;
+    justify-content: center;
 }

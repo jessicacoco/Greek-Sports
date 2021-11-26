@@ -62,8 +62,10 @@ function ResultsTable({ results, name }) {
 
   return (
     <>
-      <h3>{name}</h3>
-      <Table columns={columns} dataSource={results} pagination={false} />
+      <div class="main">
+        <h3>{name}</h3>
+        <Table columns={columns} dataSource={results} pagination={false} />
+      </div>
     </>
   );
 }

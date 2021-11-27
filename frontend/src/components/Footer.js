@@ -1,6 +1,8 @@
 import React from 'react';
+
 import './Footer.css';
 
+// Creates the Footer for all pages.
 function Footer() {
     return (
         <>

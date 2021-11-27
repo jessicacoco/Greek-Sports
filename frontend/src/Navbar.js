@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import './Navbar.css';
 
-
+// Creates navigation bar for all pages.
 function Navbar() {
     return (
         <>

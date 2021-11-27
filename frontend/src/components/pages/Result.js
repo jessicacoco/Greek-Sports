@@ -1,20 +1,23 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+
 import { Row, Col } from 'antd';
-import Footer from '../Footer';
-import './Result.css';
+
 import ResultsTable from '../Home/ResultsTable';
+import Footer from '../Footer';
 import { readCSV, normalizeTableData, FSQuery, ClubAndSportQuery } from '../../utils/readCSV';
 
+import './Result.css';
+
+/* Creates Result page using properties name to search for and type of search 
+passed to it on component call. Calls ResultsTable to show search results. */
 function Result(props) {
-    // Reads the search options from the database (in this case the CSV file)
+    // Reads the search options from the database (in this case the CSV file).
     const csvData = readCSV();
     var name = props.location.resultProps.name;
     var type = props.location.resultProps.type;
     if (type == 'fs') {
         var results = normalizeTableData(FSQuery(csvData, name, true));
-    }
-    else {
+    } else {
         var results = normalizeTableData(ClubAndSportQuery(csvData, name, true));
     }
 

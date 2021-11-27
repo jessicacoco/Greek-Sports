@@ -1,13 +1,17 @@
 import React from 'react';
+
 import { Form, Input, Button, message } from 'antd';
+
 import './ContactUsForm.css';
 
+// Creates ContactUs form for ContactUs page.
 function ContactUsForm() {
-
+    /* On form submission, if all required fields are filled, send user a Success Message.
+    Send email to developers' email. */
     const onFinish = (values) => {
         console.log('Success:', values);
         message.success('Form submitted');
-      };
+    };
     
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);

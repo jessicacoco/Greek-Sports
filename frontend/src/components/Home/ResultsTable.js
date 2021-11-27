@@ -1,11 +1,17 @@
 import React from 'react';
+
 import { Table, Tag } from 'antd';
+
 import './ResultsTable.css';
 
+/* Creates Results table for Home page after search is conducted or 
+for Results page if organization link or More Info button is clicked. */
 function ResultsTable({ results, name }) {
   const types = new Set(results.map(result => result.type));
   let filters = [];
-  // Only show applicable filters
+  /* Only show applicable filters: if the user searched by Fraternity/Sorority,
+  they should be able to filer by Club or Sport. If they searched by Club or Sport, 
+  they should be able to filter by Fraternity or Sorority. */
   if (types.has('Club') || types.has('Sport')) {
     filters = [
       {
@@ -29,6 +35,8 @@ function ResultsTable({ results, name }) {
       }
     ];
   }
+
+  // Sets columns for Results table.
   const columns = [{
     title: 'Name',
     dataIndex: 'name',

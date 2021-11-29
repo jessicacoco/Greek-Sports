@@ -31,7 +31,9 @@ function Explore() {
     }
     return (
         <>
+        <div class="main">
         {cards}
+        </div>
         <Row>
             <Col span={24}>
                 <Footer />

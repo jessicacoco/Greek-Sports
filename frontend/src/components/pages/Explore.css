@@ -1,6 +1,11 @@
 @import '~antd/dist/antd.css';
 
-/* The flip card container. */
+.main {
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
     background-color: transparent;
     display: inline-flex;
@@ -37,13 +42,13 @@
   
   /* Style the front side (fallback if image is missing). */
   .flip-card-front {
-    background-color: #bbb;
+    background-color: #e0e0e0;
     color: black;
   }
   
   /* Style the back side. */
   .flip-card-back {
-    background-color: #bbb;
+    background-color: #e0e0e0;
     color: black;
     transform: rotateY(180deg);
   }

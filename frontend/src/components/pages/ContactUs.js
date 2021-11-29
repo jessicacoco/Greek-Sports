@@ -1,9 +1,13 @@
 import React from 'react';
+
 import { Row, Col } from 'antd';
+
 import ContactUsForm from '../ContactUs/ContactUsForm';
 import Footer from '../Footer';
+
 import './ContactUs.css';
 
+// Creates ContactUs page and calls ContactUs form component.
 function ContactUs() {
     return (
         <div className="contact-us">

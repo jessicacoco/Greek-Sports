@@ -1,14 +1,17 @@
 import React from 'react';
+
 import { Card } from 'antd';
+
 import './ProfileCard.css';
 
-function ProfileCard(inputs) {
+// Returns a ProfileCard for the AboutUs page.
+function ProfileCard(props) {
     return (
         <Card bordered={false}>
-            <img className="profileImage" src={inputs.src} alt="Profile"/>
-            <h4 className="profileName">{inputs.name}</h4>
-            <h5 className="profileYear">{inputs.year}</h5>
-            <h5 className="profileEnd">{inputs.end}</h5>
+            <img className="profileImage" src={props.src} alt={"Profile image for "+props.name} />
+            <h4 className="profileName">{props.name}</h4>
+            <h5 className="profileYear">{props.year}</h5>
+            <h5 className="profileEnd">{props.end}</h5>
         </Card>
     );
 }

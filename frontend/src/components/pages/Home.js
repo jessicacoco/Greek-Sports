@@ -7,23 +7,28 @@ import './Home.css';
 
 const { TabPane } = Tabs;
 
+/* Creates Home page and calls SearchCard and ResultsTable components.
+Returns only the searchbar if search has not been initiated.
+After search, returns searchbar and results from search.
+*/
 function Home() {
     const [results, setResults] = useState([]);
     const [name, setName] = useState('');
 
+    // Sets Search Results after search button has been clicked.
     function setSearchResults(values) {
         setResults(values);
-        console.log(values);
     }
 
+    // Sets Search Name using value selected by user.
     function setSearchName(value) {
         setName(value);
     }
 
+    // Clears name and results after search.
     function clear(key) {
         setName('');
         setResults([]);
-        console.log('cleared',key);
     }
 
     if (name.length === 0) {
@@ -51,8 +56,7 @@ function Home() {
                 </Row>
             </>
         );
-    }
-    else {
+    } else {
         return (
             <>
                 <Row justify="center">

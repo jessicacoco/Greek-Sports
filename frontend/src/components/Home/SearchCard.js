@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
-import './SearchCard.css';
+
 import { Select, Button } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
+
 import { activityQuery, readCSV, allFSQuery, normalizeTableData, FSQuery, ClubAndSportQuery } from '../../utils/readCSV';
+
+import './SearchCard.css';
 
 const { Option } = Select;
 
-
+// Creates Search bar on Home page.
 function SearchCard({ setSearchResults, setSearchName, type }) {
     const [value, setValue] = useState('');
 
-    // Reads the search options from the database (in this case the CSV file)
+    // Reads the search options from the database (in this case the CSV file).
     const csvData = readCSV();
     let options = [];
     if (type === "greek") {
@@ -21,15 +24,16 @@ function SearchCard({ setSearchResults, setSearchName, type }) {
         options = activityQuery(csvData, false);
     }
 
+    /* Changes the state of value selected when a new value is selected
+    in dropdown */
     function onChange(val) {
         setValue(val);
         console.log('selected:', value);
     };
 
+    /* Changes the state of search value when search button is clicked.
+    Calls search function on value selected by user. */
     function onSearch() {
-        // call search DB request here using value
-        // put request results in and redirect
-        //window.location.href = "http://stackoverflow.com";
         setSearchName(value);
         if (type === "greek") {
             setSearchResults(normalizeTableData(FSQuery(csvData, value, true)));

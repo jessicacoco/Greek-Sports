@@ -1,10 +1,12 @@
 import React from 'react';
+
 import { Card } from 'antd';
+
 import './FrontCard.css';
 
 const { Meta } = Card;
 
-
+// Creates FrontCard for Explore page.
 function FrontCard({name, letters}) {
     return (
         <>

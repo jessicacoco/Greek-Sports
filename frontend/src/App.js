@@ -1,11 +1,14 @@
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 import Navbar from './Navbar';
 import Home from './components/pages/Home';
 import AboutUs from './components/pages/AboutUs';
 import ContactUs from './components/pages/ContactUs';
 import Explore from './components/pages/Explore';
 import Result from './components/pages/Result';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+import './App.css';
 
 function App() {
   return (

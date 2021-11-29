@@ -1,14 +1,17 @@
 import React from 'react';
+
+import { Row, Col } from 'antd';
+
 import FrontCard from '../Explore/FrontCard';
 import BackCard from '../Explore/BackCard';
 import Footer from '../Footer';
-import { Row, Col } from 'antd';
-import './Explore.css';
 import { readCSV, allFSExploreQuery } from '../../utils/readCSV';
 
-function Explore() {
+import './Explore.css';
 
-    // call FSExplore query here
+// Creates Explore page and calls FrontCard and BackCard components.
+function Explore() {
+    // Calls FSExplore query to return all fraternities and sororities.
     const csvData = readCSV();
     let data = allFSExploreQuery(csvData);
 

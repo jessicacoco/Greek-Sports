@@ -1,46 +1,29 @@
-import React from 'react';
-import { Form, Input, Button, message } from 'antd';
+import React, { useRef } from 'react';
+import emailjs from 'emailjs-com';
 import './ContactUsForm.css';
 
-function ContactUsForm() {
+export const ContactUsForm = () => {
+  const form = useRef();
 
-    const onFinish = (values) => {
-        console.log('Success:', values);
-        message.success('Form submitted');
-      };
-    
-    const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
-    };
+  const sendEmail = (e) => {
+    e.preventDefault();
 
-    return (
-        <Form
-          name="basic"
-          labelCol={{ span: 8, }}
-          wrapperCol={{ span: 40, }}
-          initialValues={{ remember: true, }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-          autoComplete="off">
-          <Form.Item name="name" 
-            rules={[{ required: true, message: 'Please input your name!',},]}>
-            <Input placeholder="Full Name"/>
-          </Form.Item>
-          <Form.Item name="email"
-            rules={[{ required: true, message: 'Please input your email!',},]}>
-            <Input placeholder="Email"/>
-          </Form.Item>
-          <Form.Item name="message"
-            rules={[{ required: true, message: 'Please input a message!',},]}>
-            <Input.TextArea placeholder="Message" allowClear showCount autoSize={{ minRows: 2, maxRows: 6 }}/>
-          </Form.Item>
-          <Form.Item wrapperCol={{ span: 24, }}>
-            <Button id="contactUsbtn" type="primary" htmlType="submit">
-              Submit
-            </Button>
-          </Form.Item>
-        </Form>
-    );
+    emailjs.sendForm('gmail', 'test_template', form.current, 'user_ndZKEDaxn9hHCXBedYIaH')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+    e.target.reset();
+  };
+
+  return (
+    <form ref={form} onSubmit={sendEmail}>
+      <input type="text" name="from_name" placeholder="Name"/><br/><br/>
+      <input type="email" name="user_email" placeholder="Email"/><br/><br/>
+      <textarea name="message" placeholder="Message"/><br/><br/>
+      <input type="submit" value="Send" />
+    </form>
+  );
 };
-
 export default ContactUsForm;

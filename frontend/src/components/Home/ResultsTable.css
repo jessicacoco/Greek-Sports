@@ -1,6 +1,6 @@
-@import '~antd/dist/antd.css';
+@import "~antd/dist/antd.css";
 
 .main {
-    margin-top: 20px;
-    margin-bottom: 100px;
-  }
+  margin-top: 20px;
+  margin-bottom: 100px;
+}

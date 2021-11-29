@@ -1,16 +1,16 @@
-@import '~antd/dist/antd.css';
+@import "~antd/dist/antd.css";
 
 /* Object-fit unwarps pictures. */
 .profileImage {
-    min-height: 150px;
-    height: 150px;
-    min-width: 150px;
-    width: 150px;
-    object-fit: cover;
-    border-radius: 50%;
+  min-height: 150px;
+  height: 150px;
+  min-width: 150px;
+  width: 150px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .profileName {
-    font-weight: bold;
-    margin-top: 10px;
+  font-weight: bold;
+  margin-top: 10px;
 }

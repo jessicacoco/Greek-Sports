@@ -75,6 +75,11 @@ describe('FSQuery Tests', () => {
         // there should be 20 results for activities that have Delta Tau Delta members
         expect(results.length).toBe(20);
     });
+    test('FS Query for Phi Gamma Delta', () => {
+        const results = FSQuery(csvData, "Phi Gamma Delta", true);
+        // there should be 20 results for activities that have Delta Tau Delta members
+        expect(results.length).toBe(19);
+    });
 });
 
 describe('Club and Sport Query Tests', () => {
@@ -93,6 +98,11 @@ describe('Club and Sport Query Tests', () => {
         const results = ClubAndSportQuery(csvData, "Boxing", true);
         // there should be 26 results for greek organizations that have members in Boxing
         expect(results.length).toBe(26);
+    });
+    test('Club and Sport Query for Outing', () => {
+        const results = ClubAndSportQuery(csvData, "Outing", true);
+        // there should be 26 results for greek organizations that have members in Boxing
+        expect(results.length).toBe(29);
     });
 });
 

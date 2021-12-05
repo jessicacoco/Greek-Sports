@@ -9,8 +9,8 @@ import { cleanData } from '../../utils/readCSV';
 export function mockReadCSVNode() {
     // Use the Node FS apis to read the CSV files since this is backend tests
     // we have the node environment available
-    const fraternities = fs.readFileSync('./public/fraternities.csv').toString();
-    const sorority = fs.readFileSync('./public/sororities.csv').toString();
+    const fraternities = fs.readFileSync('./public/mock_frats.csv').toString();
+    const sorority = fs.readFileSync('./public/mock_sororities.csv').toString();
 
     const sororityData = cleanData(sorority);
     const fraternityData = cleanData(fraternities, true);

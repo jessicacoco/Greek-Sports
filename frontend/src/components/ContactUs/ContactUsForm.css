@@ -1,15 +1,15 @@
-@import '~antd/dist/antd.css';
+@import "~antd/dist/antd.css";
 
 input {
-    border-radius:10px;
-    width: 300px;
-    padding-left: 10px;
+  border-radius: 10px;
+  width: 300px;
+  padding-left: 10px;
 }
 button#contactUsbtn {
-    width: 100%;
+  width: 100%;
 }
 
 textarea {
-    width: 300px;
-    border-radius:10px;
+  width: 300px;
+  border-radius: 10px;
 }

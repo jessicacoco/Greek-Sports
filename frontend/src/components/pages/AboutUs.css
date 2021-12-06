@@ -1,31 +1,34 @@
-@import '~antd/dist/antd.css';
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;400;500;600&display=swap');
+@import "~antd/dist/antd.css";
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;400;500;600&display=swap");
 
 /* Overrides default border from ant design. */
 .ant-card-bordered {
-    border: none;
+  border: none;
 }
 
 /* Overrides default background from ant design components. */
-.ant-card, .ant-row, .ant-card-body, .ant-col {
-    background: none;
+.ant-card,
+.ant-row,
+.ant-card-body,
+.ant-col {
+  background: none;
 }
 
 h2 {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 2em;
-    font-weight: 400;
-    margin: 10px 10px 10px 20px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 2em;
+  font-weight: 400;
+  margin: 10px 10px 10px 20px;
 }
 
 #creators-title {
-    color: white;
+  color: white;
 }
 
 p {
-    margin: 0 20px;
+  margin: 0 20px;
 }
 
 .slant {
-    background: linear-gradient(177deg, #012A4A 50%, white 30%)
+  background: linear-gradient(177deg, #012a4a 50%, white 30%);
 }

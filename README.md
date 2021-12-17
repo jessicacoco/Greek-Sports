@@ -1,7 +1,7 @@
 # Greek-Sports
 sd&amp;d greek sports repo
 
-# Getting Started with Create React App
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
